@@ -17,10 +17,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <h1 className={raleway.className}>Movie DB Title</h1>
-        <h2 className={josefin_sans.className}>Subheader</h2>
-        <p className={overpass.className}>description</p>
+      <main className="center container">
+        <h1 className={`header ${raleway.className}`}>Movie DB Title</h1>
+        <h2 className={`subheader ${josefin_sans.className}`}>Subheader</h2>
+        <p className={`text ${overpass.className}`}>description</p>
       </main>
     </>
   );
