@@ -71,3 +71,24 @@ body {
 .text {
   font-size: $fs-400;
 }
+
+// media-queries make as mixins
+/* Portrait and Landscape */
+@media (max-width: 23.4375em) {
+  /* CSS Rules */
+}
+
+/* Portrait and Landscape */
+@media (min-width: 23.4375em) and (max-width: 40.0625em) {
+  /* CSS Rules */
+}
+
+/* Portrait and Landscape */
+@media (min-width: 40.0625em) and (max-width: 64.9375em) {
+  /* CSS Rules */
+}
+
+/* Portrait and Landscape */
+@media (min-width: 64.9375em) {
+  /* CSS Rules */
+}
