@@ -1,7 +1,19 @@
+import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 
 function MovieId() {
-  return <div>MovieId</div>;
+  const router = useRouter();
+  const movieId = router.query.movieId;
+
+  console.log("movieId", movieId);
+
+  return (
+    <div>
+      MovieId
+      <Link href="/actor/test-actor-id"> Actor Link</Link>
+    </div>
+  );
 }
 
 export default MovieId;
