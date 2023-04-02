@@ -1,9 +1,6 @@
 import Head from "next/head";
-import { Raleway, Josefin_Sans, Overpass } from "next/font/google";
-
-const raleway = Raleway({ subsets: ["latin"], style: ["normal"] });
-const josefin_sans = Josefin_Sans({ subsets: ["latin"], style: ["italic"] });
-const overpass = Overpass({ subsets: ["latin"] });
+import Layout from "$/components/composition/Layout";
+import Search from "$/components/block/Search";
 
 export default function Home() {
   return (
@@ -17,11 +14,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="center container">
-        <h1 className={`header ${raleway.className}`}>Movie DB Title</h1>
-        <h2 className={`subheader ${josefin_sans.className}`}>Subheader</h2>
-        <p className={`text ${overpass.className}`}>description</p>
-      </main>
+      <Layout>
+        <div className="center">
+          <Search />
+        </div>
+      </Layout>
     </>
   );
 }

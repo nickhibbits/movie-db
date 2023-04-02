@@ -1,4 +1,4 @@
-import "@/styles/globals.scss";
+import "$/styles/globals.scss";
 import type { AppProps } from "next/app";
 import { Raleway, Josefin_Sans, Overpass } from "next/font/google";
 
@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <style jsx global>
         {`
-          .header {
+          html {
             font-family: ${raleway.style.fontFamily};
           }
           .subheader {

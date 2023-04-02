@@ -1,10 +1,8 @@
 import React from "react";
+import classes from "$/styles/Layout.module.scss";
 
-// add main layout styles
-// consider other composition classes -- differing page layouts, etc
-
-function Layout(children: React.ReactNode) {
-  return <div className="layout">{children}</div>;
+function Layout({ children }: any) {
+  return <main className={`${classes.layout}`}>{children}</main>;
 }
 
 export default Layout;
