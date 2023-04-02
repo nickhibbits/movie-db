@@ -16,7 +16,7 @@ $fs-400: 1.125rem; // 18px
 
 // font-weights
 $fw-400: 400;
-$fw-700: 700;
+$fw-600: 600;
 
 // size/spacing values (Including the border-width)
 $size-8: 0.5rem;
@@ -62,6 +62,7 @@ body {
 // utiliy classes
 .header {
   font-size: $fs-900;
+  font-weight: $fw-400;
 }
 
 .subheader {
