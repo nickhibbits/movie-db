@@ -1,4 +1,14 @@
+@use "variables";
+
 .input {
   padding: 0.5rem;
   min-width: 25rem;
+  border: none;
+  border-bottom: 1px solid variables.$color-neutral-900;
+}
+
+.searchResults {
+  background: variables.$color-neutral-100;
+  color: variables.$color-neutral-900;
+  padding: 0.5rem;
 }

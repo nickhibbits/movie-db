@@ -1,30 +1,4 @@
-// box shadows
-// gradients
-// border radii
-
-// colors
-$color-neutral-100: #fff;
-$color-neutral-900: #1f3049;
-$color-primary-400: #0066ff;
-
-// font-sizes
-$fs-900: 3.75rem; // 60px
-$fs-800: 3rem; // 48px
-$fs-600: 1.5rem; // 24px
-$fs-500: 1.3125rem; // 21px
-$fs-400: 1.125rem; // 18px
-
-// font-weights
-$fw-400: 400;
-$fw-600: 600;
-
-// size/spacing values (Including the border-width)
-$size-8: 0.5rem;
-$size-12: 0.75rem; // (not in design)
-$size-16: 1rem;
-$size-20: 1.25rem;
-$size-32: 2rem;
-$size-36: 2.25rem;
+@use "variables";
 
 // simple reset
 *,
@@ -41,10 +15,10 @@ $size-36: 2.25rem;
 
 // base styles
 body {
-  font-size: $fs-400;
-  font-weight: $fw-400;
-  color: $color-neutral-100;
-  background-color: $color-neutral-900;
+  font-size: variables.$fs-400;
+  font-weight: variables.$fw-400;
+  color: variables.$color-neutral-100;
+  background-color: variables.$color-neutral-900;
   // text-align: center;
 }
 
@@ -56,22 +30,28 @@ body {
 }
 
 .center {
+  // must be child of grid container
   justify-self: center;
   align-self: center;
 }
 
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
 // utiliy classes
 .header {
-  font-size: $fs-900;
-  font-weight: $fw-400;
+  font-size: variables.$fs-900;
+  font-weight: variables.$fw-400;
 }
 
 .subheader {
-  font-size: $fs-600;
+  font-size: variables.$fs-600;
 }
 
 .text {
-  font-size: $fs-400;
+  font-size: variables.$fs-400;
 }
 
 // media-queries make as mixins

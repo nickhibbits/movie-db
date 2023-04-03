@@ -15,7 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <div className="center">
+        <div className="center column">
           <Search />
         </div>
       </Layout>
