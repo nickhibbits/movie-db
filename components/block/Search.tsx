@@ -6,14 +6,22 @@ function Search() {
   const value = useRef<HTMLInputElement>(null);
   const [results, setResults] = useState<string[]>([]);
 
-  function updateValues() {
-    // implement logic to tap movie db
+  function updateResults() {
+    // feed input value into movie db call
     // filter results from movie db
     // display filtered results by passing them as prop to SearchResults
 
     value.current && setResults([value.current.value]);
+  }
 
-    // value.current && console.log(value.current.value);
+  async function handleSelect(result: string) {
+    console.log("selected result", result);
+
+    const res = await fetch(`./api/movies/getAllMovies?movie=${result}`).then(
+      (res) => res.json()
+    );
+
+    console.log("res", res);
   }
 
   return (
@@ -23,10 +31,10 @@ function Search() {
         type="text"
         placeholder="Search movies and actors"
         ref={value}
-        onInput={() => updateValues()}
+        onInput={() => updateResults()}
       />
       {results.length > 0 && results[0] !== "" && (
-        <SearchResults results={results} />
+        <SearchResults results={results} handleSelect={handleSelect} />
       )}
     </>
   );
