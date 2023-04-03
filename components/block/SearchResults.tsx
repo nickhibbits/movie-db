@@ -3,15 +3,23 @@ import classes from "$/styles/Search.module.scss";
 
 type SearchResultProps = {
   results: string[];
+  handleSelect: any;
 };
 
-function SearchResults({ results }: SearchResultProps) {
+function SearchResults({ results, handleSelect }: SearchResultProps) {
   return (
-    <div className={classes.searchResults}>
+    <ul className={classes.searchResults}>
       {results.map((result) => {
-        return result;
+        return (
+          <li
+            className={classes.searchResult}
+            onClick={() => handleSelect(result)}
+          >
+            {result}
+          </li>
+        );
       })}
-    </div>
+    </ul>
   );
 }
 
