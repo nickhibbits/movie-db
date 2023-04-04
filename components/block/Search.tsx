@@ -1,27 +1,21 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import classes from "$/styles/Search.module.scss";
-import SearchResults from "$/components/block/SearchResults";
 
 function Search() {
-  const value = useRef<HTMLInputElement>(null);
-  const [results, setResults] = useState<string[]>([]);
+  const title = useRef<HTMLInputElement>(null);
 
-  function updateResults() {
-    // feed input value into movie db call
-    // filter results from movie db
-    // display filtered results by passing them as prop to SearchResults
+  async function handleSelect(e: any) {
+    if (e.key === "Enter") {
+      console.log("Enter key pressed");
 
-    value.current && setResults([value.current.value]);
-  }
+      const res = await fetch(
+        `./api/movies/searchTitles?title=${
+          title.current && title.current.value
+        }`
+      ).then((res) => res.json());
 
-  async function handleSelect(result: string) {
-    console.log("selected result", result);
-
-    const res = await fetch(`./api/movies/getAllMovies?movie=${result}`).then(
-      (res) => res.json()
-    );
-
-    console.log("res", res);
+      console.log("res", res);
+    }
   }
 
   return (
@@ -29,13 +23,10 @@ function Search() {
       <input
         className={classes.input}
         type="text"
-        placeholder="Search movies and actors"
-        ref={value}
-        onInput={() => updateResults()}
+        placeholder="Search movies by title"
+        ref={title}
+        onKeyDown={(e) => handleSelect(e)}
       />
-      {results.length > 0 && results[0] !== "" && (
-        <SearchResults results={results} handleSelect={handleSelect} />
-      )}
     </>
   );
 }
