@@ -1,7 +1,10 @@
 import React, { useRef } from "react";
 import classes from "$/styles/Search.module.scss";
+import { useRouter } from "next/router";
 
 function Search() {
+  const router = useRouter();
+
   const title = useRef<HTMLInputElement>(null);
 
   async function handleSelect(e: any) {
@@ -15,6 +18,8 @@ function Search() {
       ).then((res) => res.json());
 
       console.log("res", res);
+
+      router.push("/results");
     }
   }
 
