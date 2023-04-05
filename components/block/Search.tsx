@@ -19,7 +19,10 @@ function Search() {
 
       console.log("res", res);
 
-      router.push("/results");
+      router.push({
+        pathname: "/results",
+        query: { results: JSON.stringify(res) },
+      });
     }
   }
 
