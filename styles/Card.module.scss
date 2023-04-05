@@ -1,0 +1,6 @@
+@use "variables";
+
+.cardBlock {
+  padding: variables.$padding1;
+  border: variables.$border-thin;
+}

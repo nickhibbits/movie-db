@@ -1,32 +1,7 @@
 import React from "react";
 import Layout from "$/components/composition/Layout";
-import { useRouter } from "next/router";
-
-type Result = {
-  id: string;
-  primaryImage: {
-    caption: any;
-    height: number;
-    id: string;
-    url: string;
-    width: number;
-  };
-  releaseDate: {
-    day: number;
-    month: number;
-    year: number;
-  };
-  releaseYear: { endYear: null; year: number };
-  titleText: { text: string };
-  titleType: {
-    canHaveEpisodes: boolean;
-    categories: any[];
-    id: string;
-    isEpisode: boolean;
-    isSeries: boolean;
-    text: string;
-  };
-};
+import Card from "$/components/block/Card";
+import { Result } from "$/types/movieResults";
 
 function Results({ results }: { results: string }) {
   const _results = JSON.parse(results).results as Result[];
@@ -38,7 +13,20 @@ function Results({ results }: { results: string }) {
       <Layout>
         <ul>
           {_results.map((result, index) => {
-            return <li>{_results[index].id}</li>;
+            console.log("🔴 TODO", "develop Ui with relevant result data");
+
+            const { id, primaryImage, releaseYear, titleText } =
+              _results[index];
+            console.log("primaryImage", primaryImage);
+            return (
+              <li key={id}>
+                <Card
+                  primaryImage={primaryImage}
+                  releaseYear={releaseYear}
+                  titleText={titleText}
+                />
+              </li>
+            );
           })}
         </ul>
       </Layout>

@@ -17,6 +17,8 @@ function Search() {
         }`
       ).then((res) => res.json());
 
+      console.log("🔴 TODO", "revisit best practices for error handling");
+
       console.log("res", res);
 
       router.push({
