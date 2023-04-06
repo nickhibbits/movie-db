@@ -9,8 +9,6 @@ function Search() {
 
   async function handleSelect(e: any) {
     if (e.key === "Enter") {
-      console.log("Enter key pressed");
-
       const res = await fetch(
         `./api/movies/searchTitles?title=${
           title.current && title.current.value
@@ -18,8 +16,6 @@ function Search() {
       ).then((res) => res.json());
 
       console.log("🔴 TODO", "revisit best practices for error handling");
-
-      console.log("res", res);
 
       router.push({
         pathname: "/results",

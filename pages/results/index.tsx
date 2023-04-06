@@ -9,28 +9,26 @@ function Results({ results }: { results: string }) {
   console.log("_results", _results);
 
   return (
-    <>
-      <Layout>
-        <ul>
-          {_results.map((result, index) => {
-            console.log("🔴 TODO", "develop Ui with relevant result data");
+    <Layout>
+      <ul>
+        {_results.map((_, index) => {
+          console.log("🔴 TODO", "develop Ui");
+          console.log("🔴 TODO", "fix width/layout issue");
+          const { id, primaryImage, releaseYear, titleText } = _results[index];
 
-            const { id, primaryImage, releaseYear, titleText } =
-              _results[index];
-            console.log("primaryImage", primaryImage);
-            return (
-              <li key={id}>
-                <Card
-                  primaryImage={primaryImage}
-                  releaseYear={releaseYear}
-                  titleText={titleText}
-                />
-              </li>
-            );
-          })}
-        </ul>
-      </Layout>
-    </>
+          return (
+            <li key={id}>
+              <Card
+                id={id}
+                primaryImage={primaryImage}
+                releaseYear={releaseYear}
+                titleText={titleText}
+              />
+            </li>
+          );
+        })}
+      </ul>
+    </Layout>
   );
 }
 

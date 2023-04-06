@@ -26,11 +26,9 @@ li {
   list-style: none;
 }
 
-// composition classes
-.container {
-  width: min(100% - 2rem, 60rem);
-  margin-inline: auto;
-  // border: solid 2px red;
+a {
+  text-decoration: none;
+  color: variables.$color-neutral-100;
 }
 
 .center {
