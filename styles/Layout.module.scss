@@ -4,5 +4,8 @@
   margin-inline: auto;
   min-height: 100vh;
   overflow-x: scroll;
-  // grid-template-columns: 100%;
+}
+
+.containGridItemContent {
+  min-width: 0;
 }

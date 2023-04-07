@@ -25,7 +25,7 @@ function Search() {
   }
 
   return (
-    <>
+    <div className="center column">
       <input
         className={classes.input}
         type="text"
@@ -33,7 +33,7 @@ function Search() {
         ref={title}
         onKeyDown={(e) => handleSelect(e)}
       />
-    </>
+    </div>
   );
 }
 

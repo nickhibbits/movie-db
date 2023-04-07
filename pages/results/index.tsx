@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "$/components/composition/Layout";
 import Card from "$/components/block/Card";
 import { Result } from "$/types/movieResults";
+import classes from "$/styles/Layout.module.scss";
 
 function Results({ results }: { results: string }) {
   const _results = JSON.parse(results).results as Result[];
@@ -10,7 +11,7 @@ function Results({ results }: { results: string }) {
 
   return (
     <Layout>
-      <ul>
+      <ul className={classes.containGridItemContent}>
         {_results.map((_, index) => {
           console.log("🔴 TODO", "develop Ui");
           console.log("🔴 TODO", "fix width/layout issue");
