@@ -1,7 +1,9 @@
 import React from "react";
-import Layout from "$/components/composition/Layout";
-import Card from "$/components/block/Card";
 import { Result } from "$/types/movieResults";
+
+import Card from "$/components/block/Card";
+import Layout from "$/components/composition/Layout";
+
 import classes from "$/styles/Layout.module.scss";
 
 function Results({ results }: { results: string }) {
@@ -10,26 +12,22 @@ function Results({ results }: { results: string }) {
   console.log("_results", _results);
 
   return (
-    <Layout>
-      <ul className={classes.containGridItemContent}>
-        {_results.map((_, index) => {
-          console.log("🔴 TODO", "develop Ui");
-          console.log("🔴 TODO", "fix width/layout issue");
-          const { id, primaryImage, releaseYear, titleText } = _results[index];
+    <ul className={classes.layout}>
+      {_results.map((_, index) => {
+        const { id, primaryImage, releaseYear, titleText } = _results[index];
 
-          return (
-            <li key={id}>
-              <Card
-                id={id}
-                primaryImage={primaryImage}
-                releaseYear={releaseYear}
-                titleText={titleText}
-              />
-            </li>
-          );
-        })}
-      </ul>
-    </Layout>
+        return (
+          <li key={id}>
+            <Card
+              id={id}
+              primaryImage={primaryImage}
+              releaseYear={releaseYear}
+              titleText={titleText}
+            />
+          </li>
+        );
+      })}
+    </ul>
   );
 }
 

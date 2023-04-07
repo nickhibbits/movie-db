@@ -1,6 +1,9 @@
 // box shadows
 // gradients
 // border radii
+$border-radius-1: 10px;
+$border-radius-5: 30px;
+$border-radius-10: 50px;
 
 // colors
 $color-neutral-100: #fff;
@@ -32,4 +35,4 @@ $padding2: 1rem;
 $padding3: 2rem;
 
 // borders
-$border-thin: 1px solid $color-neutral-100;
+$border-thin: 1px solid $color-neutral-900;

@@ -1,7 +1,8 @@
 import React from "react";
-import classes from "$/styles/Card.module.scss";
 import { PrimaryImage, ReleaseYear } from "$/types/movieResults";
 import Link from "next/link";
+
+import classes from "$/styles/Card.module.scss";
 
 function Card({
   id,
@@ -14,10 +15,15 @@ function Card({
   releaseYear: ReleaseYear;
   titleText: { text: string };
 }) {
+  console.log("🔴 TODO", "style Ui");
   return (
     <Link href={`/movie/${id}`}>
       <div className={classes.cardBlock}>
-        <div>{primaryImage && primaryImage.url}</div>
+        <img
+          src={`${primaryImage && primaryImage.url}`}
+          alt={`${titleText.text} cover`}
+          className="image"
+        />
         <div>{releaseYear.year}</div>
         <div>{titleText.text}</div>
       </div>

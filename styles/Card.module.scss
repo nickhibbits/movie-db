@@ -1,6 +1,6 @@
 @use "variables";
+@use "mixins";
 
 .cardBlock {
-  padding: variables.$padding1;
-  border: variables.$border-thin;
+  @include mixins.cardBaseStyle;
 }

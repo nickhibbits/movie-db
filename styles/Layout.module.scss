@@ -1,11 +1,8 @@
 .layout {
   display: grid;
-  width: min(100% - 2rem, 40rem);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.5rem;
+  width: min(100% - 2rem, 60rem);
   margin-inline: auto;
   min-height: 100vh;
-  overflow-x: scroll;
-}
-
-.containGridItemContent {
-  min-width: 0;
 }
