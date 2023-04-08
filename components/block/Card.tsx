@@ -24,8 +24,8 @@ function Card({
           alt={`${titleText.text} cover`}
           className="image"
         />
-        <div>{releaseYear.year}</div>
-        <div>{titleText.text}</div>
+        <p className={classes.cardText}>{titleText.text}</p>
+        <p className={classes.cardText}>{releaseYear.year}</p>
       </div>
     </Link>
   );

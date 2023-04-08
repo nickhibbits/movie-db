@@ -12,7 +12,7 @@ function Results({ results }: { results: string }) {
   console.log("_results", _results);
 
   return (
-    <ul className={classes.layout}>
+    <ul className={classes.cardLayout}>
       {_results.map((_, index) => {
         const { id, primaryImage, releaseYear, titleText } = _results[index];
 
