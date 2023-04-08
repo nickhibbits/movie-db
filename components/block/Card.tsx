@@ -16,7 +16,6 @@ function Card({
   releaseYear: ReleaseYear;
   titleText: { text: string };
 }) {
-  console.log("🔴 TODO", "add svg for titles with no picture");
   console.log("🔴 TODO", "add titleType");
   console.log("🔴 TODO", "sort results with movies at the top");
   return (

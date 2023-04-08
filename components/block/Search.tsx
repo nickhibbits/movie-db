@@ -8,7 +8,10 @@ function Search() {
   const title = useRef<HTMLInputElement>(null);
 
   async function handleSelect(e: any) {
-    if (e.key === "Enter") {
+    console.log("e", e);
+    if (e.key === "Enter" || e.type === "click") {
+      e.preventDefault();
+      console.log("here");
       const res = await fetch(
         `./api/movies/searchTitles?title=${
           title.current && title.current.value
@@ -25,15 +28,17 @@ function Search() {
   }
 
   return (
-    <div className="center column">
+    <form className="center column" onSubmit={(e) => handleSelect(e)}>
       <input
         className={classes.input}
         type="text"
         placeholder="Search movies by title"
         ref={title}
-        onKeyDown={(e) => handleSelect(e)}
+        // onKeyDown={(e) => handleSelect(e)}
       />
-    </div>
+
+      <button type="submit">Search</button>
+    </form>
   );
 }
 
