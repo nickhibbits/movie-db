@@ -8,11 +8,13 @@ function MovieId() {
   const movieId = router.query.movieId;
 
   console.log("movieId", movieId);
+  console.log("🔴 TODO", "fetch movie");
+  console.log("🔴 TODO", "develop UI");
 
   return (
     <div>
       MovieId
-      <Link href="/actor/test-actor-id"> Actor Link</Link>
+      <Link href="/actor/test-actor-id"> Fetch Movie</Link>
     </div>
   );
 }
