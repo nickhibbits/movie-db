@@ -10,6 +10,8 @@ function Search() {
   async function handleSelect(e: any) {
     e.preventDefault();
     if (e.type === "submit") {
+      console.log("🔴 TODO", "extract this flow into dedicated function");
+
       try {
         const res = await fetch(
           `./api/movies/searchTitles?title=${
@@ -18,18 +20,15 @@ function Search() {
         ).then((res) => res.json());
 
         if (!res.ok) {
-          console.log("badResponse", res);
           throw new Error("Bad Response", { cause: res });
         }
-
-        console.log("🔴 TODO", "extract this flow into dedicated function");
 
         router.push({
           pathname: "/results",
           query: { results: JSON.stringify(res.body) },
         });
       } catch (error) {
-        console.log("🔴 TODO", "create 404 page");
+        console.log("🔴 TODO create 404 page", error);
       }
     }
   }

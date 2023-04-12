@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import Error from "next/error";
 
 export default async function handler(
   req: NextApiRequest,
@@ -25,14 +24,18 @@ export default async function handler(
     // .then((res: any) => {
     //   throw new Error({ statusCode: 501, title: "testError" });
     // })
-    .then((res: any) => res.json())
+    .then(async (res: any) => {
+      if (!(res.status >= 200 && res.status < 400)) {
+        const body = await res.json();
+        throw new Error(`❌ ${body.message}`);
+      }
+
+      return res.json();
+    })
     .then((json: any) => json)
     .catch((err: any) => {
-      console.error("error:" + err);
       res.send({ ok: false, body: err });
     });
-
-  // console.log("response", response);
 
   res.send({ ok: true, body: response });
 }
