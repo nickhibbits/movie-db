@@ -10,18 +10,27 @@ function Search() {
   async function handleSelect(e: any) {
     e.preventDefault();
     if (e.type === "submit") {
-      const res = await fetch(
-        `./api/movies/searchTitles?title=${
-          title.current && title.current.value
-        }`
-      ).then((res) => res.json());
+      try {
+        const res = await fetch(
+          `./api/movies/searchTitles?title=${
+            title.current && title.current.value
+          }`
+        ).then((res) => res.json());
 
-      console.log("🔴 TODO", "revisit best practices for error handling");
+        if (!res.ok) {
+          console.log("badResponse", res);
+          throw new Error("Bad Response", { cause: res });
+        }
 
-      router.push({
-        pathname: "/results",
-        query: { results: JSON.stringify(res) },
-      });
+        console.log("🔴 TODO", "extract this flow into dedicated function");
+
+        router.push({
+          pathname: "/results",
+          query: { results: JSON.stringify(res.body) },
+        });
+      } catch (error) {
+        console.log("🔴 TODO", "create 404 page");
+      }
     }
   }
 
