@@ -4,14 +4,27 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  console.log("getAllMovies");
-
   const queryParams = req.query;
-  console.log("queryParams", queryParams);
   const { title } = queryParams;
 
-  const url = `https://moviesdatabase.p.rapidapi.com/titles/search/title/${title}?exact=true`;
+  const titleTypes = ["movie", "tvSeries", "tvMovie", "podcastSeries"];
 
+  const baseUrl = `https://moviesdatabase.p.rapidapi.com/titles/search/title/${title}?exact=true&titleType=`;
+
+  const getTitlesByType = titleTypes.map(async (titleType, i) => {
+    const url = `${baseUrl}${titleType}`;
+    titleType;
+    const response = await getResponse(url);
+    return { titleType, data: response };
+  });
+
+  return Promise.all(getTitlesByType).then((values) => {
+    console.log("values", values);
+    res.send(values);
+  });
+}
+
+async function getResponse(url: string) {
   const options = {
     method: "GET",
     headers: {
@@ -29,13 +42,12 @@ export default async function handler(
         const body = await res.json();
         throw new Error(`❌ ${body.message}`);
       }
-
       return res.json();
     })
     .then((json: any) => json)
     .catch((err: any) => {
-      res.send({ ok: false, body: err });
+      return { ok: false, body: err };
     });
 
-  res.send({ ok: true, body: response });
+  return { ok: true, body: response };
 }

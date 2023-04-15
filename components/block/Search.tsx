@@ -19,15 +19,16 @@ function Search() {
             title.current && formatTitle(title.current.value)
           }`
         ).then((res) => res.json());
+        console.log("res", res);
 
         if (!res.ok) {
           throw new Error("Bad Response", { cause: res });
         }
 
-        router.push({
-          pathname: "/results",
-          query: { results: JSON.stringify(res.body) },
-        });
+        // router.push({
+        //   pathname: "/results",
+        //   query: { results: JSON.stringify(res.body) },
+        // });
       } catch (error) {
         console.log("🔴 TODO create 404 page, redirect", error);
       }
