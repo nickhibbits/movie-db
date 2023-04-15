@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import classes from "$/styles/Search.module.scss";
 import { useRouter } from "next/router";
+import { formatTitle } from "$/utils/helpers";
 
 function Search() {
   const router = useRouter();
@@ -15,7 +16,7 @@ function Search() {
       try {
         const res = await fetch(
           `./api/movies/searchTitles?title=${
-            title.current && title.current.value
+            title.current && formatTitle(title.current.value)
           }`
         ).then((res) => res.json());
 
@@ -28,7 +29,7 @@ function Search() {
           query: { results: JSON.stringify(res.body) },
         });
       } catch (error) {
-        console.log("🔴 TODO create 404 page", error);
+        console.log("🔴 TODO create 404 page, redirect", error);
       }
     }
   }

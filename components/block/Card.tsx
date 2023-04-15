@@ -13,7 +13,7 @@ function Card({
 }: {
   id: string;
   primaryImage: PrimaryImage | null;
-  releaseYear: ReleaseYear;
+  releaseYear: ReleaseYear | null;
   titleText: { text: string };
 }) {
   console.log("🔴 TODO", "add titleType");
@@ -32,7 +32,9 @@ function Card({
         />
 
         <p className={classes.cardText}>{titleText.text}</p>
-        <p className={classes.cardText}>{releaseYear.year}</p>
+        <p className={classes.cardText}>
+          {releaseYear ? releaseYear.year : ""}
+        </p>
       </div>
     </Link>
   );
