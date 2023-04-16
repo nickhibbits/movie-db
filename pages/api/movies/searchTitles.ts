@@ -18,10 +18,26 @@ export default async function handler(
     return { titleType, data: response };
   });
 
-  return Promise.all(getTitlesByType).then((values) => {
-    console.log("values", values);
-    res.send(values);
-  });
+  return Promise.all(getTitlesByType)
+    .then((values) => {
+      const errors = values.filter((value, i) => {
+        return value.data.ok === false;
+      });
+
+      if (errors.length > 0) {
+        throw new Error(`❌ ${errors[0].data.body.message}`);
+      }
+
+      const _values = values.reduce((acc, cur) => {
+        acc[cur.titleType] = cur.data.body.results;
+        return acc;
+      }, {} as any);
+
+      res.send({ ok: true, body: _values });
+    })
+    .catch((err: any) => {
+      res.send({ ok: false, body: err });
+    });
 }
 
 async function getResponse(url: string) {

@@ -2,19 +2,21 @@ import React from "react";
 import { Result } from "$/types/movieResults";
 
 import Card from "$/components/block/Card";
-import Layout from "$/components/composition/Layout";
 
 import classes from "$/styles/Layout.module.scss";
 
-function Results({ results }: { results: string }) {
-  const _results = JSON.parse(results).results as Result[];
+function Results({ results }: { results: any }) {
+  const _results = JSON.parse(results);
 
-  console.log("_results", _results);
+  console.log("🔴 TODO", "build out filter feature for different titleTypes");
+  console.log("🔴 TODO", "revisit styles on cards");
+
+  const movies = Object.values(_results)[0] as Result[];
 
   return (
     <ul className={classes.cardLayout}>
-      {_results.map((_, index) => {
-        const { id, primaryImage, releaseYear, titleText } = _results[index];
+      {movies.map((_, index) => {
+        const { id, primaryImage, releaseYear, titleText } = _;
 
         return (
           <li key={id}>

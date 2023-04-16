@@ -3,7 +3,6 @@ import { PrimaryImage, ReleaseYear } from "$/types/movieResults";
 import Link from "next/link";
 
 import classes from "$/styles/Card.module.scss";
-import Image from "next/image";
 
 function Card({
   id,
