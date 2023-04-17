@@ -4,32 +4,45 @@ import { Result } from "$/types/movieResults";
 import Card from "$/components/block/Card";
 
 import classes from "$/styles/Layout.module.scss";
+import ScrollContainer from "$/components/utility/ScrollContainer";
+import Layout from "$/components/composition/Layout";
+import TitleRow from "$/components/composition/TitleRow";
 
 function Results({ results }: { results: any }) {
   const _results = JSON.parse(results);
-
-  console.log("🔴 TODO", "build out filter feature for different titleTypes");
-  console.log("🔴 TODO", "revisit styles on cards");
-
-  const movies = Object.values(_results)[0] as Result[];
+  console.log("_results", _results);
 
   return (
-    <ul className={classes.cardLayout}>
-      {movies.map((_, index) => {
-        const { id, primaryImage, releaseYear, titleText } = _;
+    <Layout>
+      {Object.entries(_results).map((result, i) => {
+        const titleType = result[0];
+        const titles = result[1] as Result[];
 
         return (
-          <li key={id}>
-            <Card
-              id={id}
-              primaryImage={primaryImage}
-              releaseYear={releaseYear}
-              titleText={titleText}
-            />
-          </li>
+          <TitleRow key={titleType}>
+            <h2>{titleType}</h2>
+            <ScrollContainer>
+              <ul className={classes.cardLayout}>
+                {titles.map((title) => {
+                  const { id, primaryImage, releaseYear, titleText } = title;
+
+                  return (
+                    <li key={id}>
+                      <Card
+                        id={id}
+                        primaryImage={primaryImage}
+                        releaseYear={releaseYear}
+                        titleText={titleText}
+                      />
+                    </li>
+                  );
+                })}
+              </ul>
+            </ScrollContainer>
+          </TitleRow>
         );
       })}
-    </ul>
+    </Layout>
   );
 }
 

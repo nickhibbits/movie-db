@@ -15,8 +15,7 @@ function Card({
   releaseYear: ReleaseYear | null;
   titleText: { text: string };
 }) {
-  console.log("🔴 TODO", "add titleType");
-  console.log("🔴 TODO", "sort results with movies at the top");
+  // console.log("🔴 TODO", "revisit styles on cards");
   return (
     <Link href={`/movie/${id}`}>
       <div className={classes.cardBlock}>

@@ -8,8 +8,8 @@ function MovieId() {
   const movieId = router.query.movieId;
 
   console.log("movieId", movieId);
-  console.log("🔴 TODO", "fetch movie");
-  console.log("🔴 TODO", "develop UI");
+  // console.log("🔴 TODO", "fetch movie");
+  // console.log("🔴 TODO", "develop UI");
 
   return (
     <div>

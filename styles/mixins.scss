@@ -1,5 +1,20 @@
 @use "variables";
 
+// Composition
+@mixin gridBaseStyle {
+  display: grid;
+  gap: 1rem;
+  width: min(100% - 2rem, 60rem);
+  margin-inline: auto;
+}
+
+// Utility
+@mixin scrollXContainer {
+  overflow-x: scroll;
+  border: solid 2px red;
+}
+
+// Block
 @mixin cardBaseStyle {
   position: relative;
   display: flex;
@@ -73,12 +88,4 @@
     }
     // color: variables.$color-neutral-100;
   }
-}
-
-@mixin gridBaseStyle {
-  display: grid;
-  gap: 1rem;
-  width: min(100% - 2rem, 60rem);
-  margin-inline: auto;
-  min-height: 100vh;
 }

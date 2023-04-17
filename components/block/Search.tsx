@@ -11,7 +11,7 @@ function Search() {
   async function handleSelect(e: any) {
     e.preventDefault();
     if (e.type === "submit") {
-      console.log("🔴 TODO", "extract this flow into dedicated function");
+      // console.log("🔴 TODO", "extract this flow into dedicated function");
 
       try {
         const res = await fetch(
