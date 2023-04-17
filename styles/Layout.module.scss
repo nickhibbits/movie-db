@@ -1,16 +1,22 @@
 @use "mixins";
+@use "variables";
 
 .layout {
   @include mixins.gridBaseStyle;
   min-height: 100vh;
+  padding: 3rem 0;
 }
 
 .titleRow {
-  border: solid 2px white;
+  padding: variables.$padding1;
+  & .titleRowHeader {
+    font-size: variables.$fs-700;
+  }
 }
 
 .cardLayout {
   @include mixins.gridBaseStyle;
+  margin: 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   padding: 1.5rem 0;
