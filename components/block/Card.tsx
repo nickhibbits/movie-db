@@ -15,9 +15,8 @@ function Card({
   releaseYear: ReleaseYear | null;
   titleText: { text: string };
 }) {
-  // console.log("🔴 TODO", "revisit styles on cards");
   return (
-    <Link href={`/movie/${id}`}>
+    <Link href={`/title/${id}`}>
       <div className={classes.cardBlock}>
         <img
           src={

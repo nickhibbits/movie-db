@@ -3,11 +3,11 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import React from "react";
 
-function MovieId() {
+function TitleId() {
   const router = useRouter();
-  const movieId = router.query.movieId;
+  const titleId = router.query.titleId;
 
-  console.log("movieId", movieId);
+  console.log("titleId", titleId);
   // console.log("🔴 TODO", "fetch movie");
   // console.log("🔴 TODO", "develop UI");
 
@@ -19,4 +19,4 @@ function MovieId() {
   );
 }
 
-export default MovieId;
+export default TitleId;
