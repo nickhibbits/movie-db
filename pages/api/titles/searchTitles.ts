@@ -40,7 +40,7 @@ export default async function handler(
     });
 }
 
-async function getResponse(url: string) {
+export async function getResponse(url: string) {
   const options = {
     method: "GET",
     headers: {
@@ -54,8 +54,10 @@ async function getResponse(url: string) {
     //   throw new Error({ statusCode: 501, title: "testError" });
     // })
     .then(async (res: any) => {
+      console.log("🔻 res", res);
       if (!(res.status >= 200 && res.status < 400)) {
         const body = await res.json();
+        console.log("body", body);
         throw new Error(`❌ ${body.message}`);
       }
       return res.json();
@@ -64,6 +66,8 @@ async function getResponse(url: string) {
     .catch((err: any) => {
       return { ok: false, body: err };
     });
+
+  console.log("🟣 response ", response);
 
   return { ok: true, body: response };
 }

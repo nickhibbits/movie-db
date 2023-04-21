@@ -1,12 +1,10 @@
 import React, { useRef } from "react";
-import classes from "$/styles/Search.module.scss";
-import { useRouter } from "next/router";
 import { formatTitle } from "$/utils/helpers";
 import { fetchData } from "$/utils/fetchData";
 
-function Search() {
-  const router = useRouter();
+import classes from "$/styles/Search.module.scss";
 
+function Search() {
   const title = useRef<HTMLInputElement>(null);
 
   async function handleSelect(e: any) {
