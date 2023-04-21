@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import classes from "$/styles/Search.module.scss";
 import { useRouter } from "next/router";
 import { formatTitle } from "$/utils/helpers";
+import { fetchData } from "$/utils/fetchData";
 
 function Search() {
   const router = useRouter();
@@ -11,26 +12,13 @@ function Search() {
   async function handleSelect(e: any) {
     e.preventDefault();
     if (e.type === "submit") {
-      // console.log("🔴 TODO", "extract this flow into dedicated function");
+      const url = `./api/titles/searchTitles?title=${
+        title.current && formatTitle(title.current.value)
+      }`;
 
-      try {
-        const res = await fetch(
-          `./api/movies/searchTitles?title=${
-            title.current && formatTitle(title.current.value)
-          }`
-        ).then((res) => res.json());
+      const redirectPage = "/results";
 
-        if (!res.ok) {
-          throw new Error("Bad Response", { cause: res });
-        }
-
-        router.push({
-          pathname: "/results",
-          query: { results: JSON.stringify(res.body) },
-        });
-      } catch (error) {
-        console.log("🔴 TODO create 404 page, redirect", error);
-      }
+      fetchData(url, redirectPage);
     }
   }
 
