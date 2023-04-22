@@ -11,11 +11,10 @@ export default async function handler(
 
   const baseUrl = `https://moviesdatabase.p.rapidapi.com/titles/search/title/${title}?exact=true&titleType=`;
 
-  const getTitlesByType = titleTypes.map(async (titleType, i) => {
+  const getTitlesByType = titleTypes.map(async (titleType) => {
     const url = `${baseUrl}${titleType}`;
-    titleType;
     const response = await getResponse(url);
-    return { titleType, data: response };
+    return { titleType, data: response.body.results };
   });
 
   return Promise.all(getTitlesByType)
@@ -29,7 +28,7 @@ export default async function handler(
       }
 
       const _values = values.reduce((acc, cur) => {
-        acc[cur.titleType] = cur.data.body.results;
+        acc[cur.titleType] = cur.data;
         return acc;
       }, {} as any);
 
