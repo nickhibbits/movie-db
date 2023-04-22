@@ -25,10 +25,6 @@ function TitleId() {
     }
   }, [titleId]);
 
-  console.log("titleId", titleId);
-  // console.log("🔴 TODO", "fetch movie");
-  // console.log("🔴 TODO", "develop UI");
-
   return (
     <div>
       MovieId

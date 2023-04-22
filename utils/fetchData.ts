@@ -57,3 +57,35 @@ export async function getResponse(url: string) {
 
   return { ok: true, body: response };
 }
+
+export async function handleMultipleResponses(
+  baseUrl: string,
+  options: string[]
+) {
+  const responseArray = options.map(async (option) => {
+    const url = `${baseUrl}${option}`;
+    const response = await getResponse(url);
+    return { option, data: response.body.results };
+  });
+
+  return Promise.all(responseArray)
+    .then((values) => {
+      const errors = values.filter((value, i) => {
+        return value.data.ok === false;
+      });
+
+      if (errors.length > 0) {
+        throw new Error(`❌ ${errors[0].data.body.message}`);
+      }
+
+      const _values = values.reduce((acc, cur) => {
+        acc[cur.option] = cur.data;
+        return acc;
+      }, {} as any);
+
+      return { ok: true, body: _values };
+    })
+    .catch((err: any) => {
+      return { ok: false, body: err };
+    });
+}
