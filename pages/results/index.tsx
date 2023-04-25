@@ -2,14 +2,12 @@ import React from "react";
 import { Result } from "$/types/movieResults";
 
 import Card from "$/components/block/Card";
-
-import ScrollContainer from "$/components/utility/ScrollContainer";
 import Layout from "$/components/composition/Layout";
 import TitleRow from "$/components/composition/TitleRow";
 
 import layoutClasses from "$/styles/Layout.module.scss";
 
-function Results({ results }: { results: any }) {
+function Results({ results }: { results: string }) {
   const _results = JSON.parse(results);
   console.log("_results", _results);
 
@@ -42,24 +40,22 @@ function Results({ results }: { results: any }) {
           return (
             <TitleRow key={titleType}>
               <h2 className={layoutClasses.titleRowHeader}>{titleType}</h2>
-              <ScrollContainer>
-                <ul className={layoutClasses.cardLayout}>
-                  {titles.map((title) => {
-                    const { id, primaryImage, releaseYear, titleText } = title;
+              <ul className={layoutClasses.cardLayout}>
+                {titles.map((title) => {
+                  const { id, primaryImage, releaseYear, titleText } = title;
 
-                    return (
-                      <li key={id}>
-                        <Card
-                          id={id}
-                          primaryImage={primaryImage}
-                          releaseYear={releaseYear}
-                          titleText={titleText}
-                        />
-                      </li>
-                    );
-                  })}
-                </ul>
-              </ScrollContainer>
+                  return (
+                    <li key={id}>
+                      <Card
+                        id={id}
+                        primaryImage={primaryImage}
+                        releaseYear={releaseYear}
+                        titleText={titleText}
+                      />
+                    </li>
+                  );
+                })}
+              </ul>
             </TitleRow>
           );
         }

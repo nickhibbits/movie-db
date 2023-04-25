@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import Link from "next/link";
 import { fetchData } from "$/utils/fetchData";
+import Layout from "$/components/composition/Layout";
 
 function TitleId() {
   const [titleInfo, setTitleInfo] = useState();
@@ -10,8 +11,6 @@ function TitleId() {
   const titleId = router.query.titleId;
 
   useEffect(() => {
-    console.log("titleId", titleId);
-
     if (titleId) {
       const getTitleInfo = async () => {
         const url = `/api/titles/searchTitlesById?titleId=${titleId}`;
@@ -26,10 +25,9 @@ function TitleId() {
   }, [titleId]);
 
   return (
-    <div>
-      MovieId
-      <Link href="/actor/test-actor-id"> {titleInfo}</Link>
-    </div>
+    <Layout>
+      <Link href="/actor/test-actor-id">{titleInfo}</Link>
+    </Layout>
   );
 }
 

@@ -4,7 +4,7 @@
 @mixin gridBaseStyle {
   display: grid;
   gap: 1rem;
-  width: min(100% - 2rem, 60rem);
+  width: variables.$standard-width;
   margin-inline: auto;
 }
 

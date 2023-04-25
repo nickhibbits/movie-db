@@ -7,7 +7,6 @@ export default async function handler(
 ) {
   const queryParams = req.query;
   const { titleId } = queryParams;
-  console.log("titleId", titleId);
 
   const options = ["base_info", "extendedCast"];
   const url = `https://moviesdatabase.p.rapidapi.com/titles/${titleId}?info=`;
