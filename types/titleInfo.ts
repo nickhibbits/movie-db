@@ -1,8 +1,17 @@
-import { Result } from "$/types/titleResults";
+import { PrimaryImage, Result } from "$/types/titleResults";
 
 export interface TitleInfo extends Result {
   genres: { text: string; id: string }[];
   plot: { plotText: { plainText: string } };
   ratingsSummary: { aggregateRating: number };
   runtime: { seconds: number };
+  extendedCast: ExtendedCast;
 }
+
+type ExtendedCast = CastMember[];
+
+type CastMember = {
+  characters: { name: string }[];
+  episodeCredits: { total: number };
+  name: { id: string; nameText: { text: string }; primaryImage: PrimaryImage };
+};

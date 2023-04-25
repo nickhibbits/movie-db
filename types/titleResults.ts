@@ -3,30 +3,30 @@ export type Result = {
   primaryImage: PrimaryImage;
   releaseDate: ReleaseDate;
   releaseYear: ReleaseYear;
-  titleText: titleText;
+  titleText: TitleText;
   titleType: TitleType;
 };
 
-export type ReleaseDate = {
+export type PrimaryImage = {
+  caption?: any;
+  height: number;
+  id?: string;
+  url: string;
+  width: number;
+};
+
+type ReleaseDate = {
   day: number;
   month: number;
   year: number;
 };
 
-export type PrimaryImage = {
-  caption: any;
-  height: number;
-  id: string;
-  url: string;
-  width: number;
-};
-
-export type ReleaseYear = {
+type ReleaseYear = {
   endYear: null;
   year: number;
 };
 
-export type TitleType = {
+type TitleType = {
   canHaveEpisodes?: boolean;
   categories?: any[];
   id: string;
@@ -35,6 +35,6 @@ export type TitleType = {
   text: string;
 };
 
-export type titleText = {
+type TitleText = {
   text: string;
 };
