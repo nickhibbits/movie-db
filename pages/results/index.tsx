@@ -1,5 +1,5 @@
 import React from "react";
-import { Result } from "$/types/movieResults";
+import { Result } from "$/types/titleResults";
 
 import Card from "$/components/block/Card";
 import Layout from "$/components/composition/Layout";

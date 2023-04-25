@@ -1,5 +1,5 @@
 import React from "react";
-import { PrimaryImage, ReleaseYear } from "$/types/movieResults";
+import { PrimaryImage, ReleaseYear } from "$/types/titleResults";
 import Link from "next/link";
 
 import classes from "$/styles/Card.module.scss";

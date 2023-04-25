@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { fetchData } from "$/utils/fetchData";
 
 import Link from "next/link";
-import { fetchData } from "$/utils/fetchData";
 import Layout from "$/components/composition/Layout";
 
 function TitleId() {
@@ -26,6 +26,7 @@ function TitleId() {
 
   return (
     <Layout>
+      <img src="" alt="" />
       <Link href="/actor/test-actor-id">{titleInfo}</Link>
     </Layout>
   );
