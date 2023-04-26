@@ -26,7 +26,7 @@ function TitleId() {
     } = data.base_info;
 
     const extendedCast = data.extendedCast.cast.edges.map((castMember: any) => {
-      const { characters, episodeCredits, name } = castMember;
+      const { characters, episodeCredits, name } = castMember.node;
 
       return { characters, episodeCredits, name };
     });
@@ -89,6 +89,27 @@ function TitleId() {
       <section className="extended-info-wrapper">
         <h2>Overview</h2>
         <p className="plot">{titleInfo?.plot.plotText.plainText}</p>
+      </section>
+      <section className="extended-cast-wrapper">
+        <h2>Cast</h2>
+        <ul>
+          {titleInfo?.extendedCast &&
+            titleInfo.extendedCast.length > 0 &&
+            titleInfo.extendedCast.map((cast) => {
+              return (
+                <li className="castMemberWrapper">
+                  <img
+                    src={
+                      cast.name.primaryImage ? cast.name.primaryImage.url : ""
+                    }
+                    alt=""
+                  />
+                  <p className="actor-name">{cast.name.nameText.text}</p>
+                  <p className="character-name">{cast.characters[0].name}</p>
+                </li>
+              );
+            })}
+        </ul>
       </section>
       <Link href="/actor/test-actor-id"></Link>
     </Layout>
