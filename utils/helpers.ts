@@ -1,3 +1,5 @@
+import { TitleInfo } from "$/types/titleInfo";
+
 export function formatTitle(title: string) {
   const splitTitle = title.split(" ");
 
@@ -12,6 +14,42 @@ export function formatTitle(title: string) {
   }
 
   return makeUpperCase(title);
+}
+
+export function formatTitleInfo(data: any) {
+  const {
+    genres,
+    id,
+    plot,
+    primaryImage,
+    ratingsSummary,
+    releaseDate,
+    releaseYear,
+    runtime,
+    titleText,
+    titleType,
+  } = data.base_info;
+
+  const extendedCast = data.extendedCast.cast.edges.map((castMember: any) => {
+    const { characters, episodeCredits, name } = castMember.node;
+
+    return { characters, episodeCredits, name };
+  });
+  let titleInfo: TitleInfo = {
+    extendedCast,
+    genres,
+    id,
+    plot,
+    primaryImage,
+    ratingsSummary,
+    releaseDate,
+    releaseYear,
+    runtime,
+    titleText,
+    titleType,
+  };
+
+  return titleInfo;
 }
 
 function makeUpperCase(word: string) {

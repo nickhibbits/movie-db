@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { formatTitle } from "$/utils/helpers";
 import { fetchData } from "$/utils/fetchData";
 
-import classes from "$/styles/Search.module.scss";
+import classes from "$/styles/block/Search.module.scss";
 
 function Search() {
   const title = useRef<HTMLInputElement>(null);

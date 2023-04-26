@@ -2,7 +2,7 @@ import React from "react";
 import { PrimaryImage } from "$/types/titleResults";
 import Link from "next/link";
 
-import classes from "$/styles/Card.module.scss";
+import classes from "$/styles/block/Card.module.scss";
 
 function Card({
   baseUrl,

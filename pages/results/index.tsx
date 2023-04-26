@@ -1,11 +1,11 @@
 import React from "react";
 import { Result } from "$/types/titleResults";
 
-import Card from "$/components/utility/Card";
+import Card from "$/components/block/Card";
 import Layout from "$/components/composition/Layout";
 import ScrollContainer from "$/components/composition/ScrollContainer";
 
-import layoutClasses from "$/styles/Layout.module.scss";
+import layoutClasses from "$/styles/composition/Layout.module.scss";
 
 function Results({ results }: { results: string }) {
   const _results = JSON.parse(results);

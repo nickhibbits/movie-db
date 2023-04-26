@@ -3,9 +3,9 @@ import { ExtendedCast } from "$/types/titleInfo";
 import React from "react";
 
 import ScrollContainer from "$/components/composition/ScrollContainer";
-import Card from "$/components/utility/Card";
+import Card from "$/components/block/Card";
 
-import layoutClasses from "$/styles/Layout.module.scss";
+import layoutClasses from "$/styles/composition/Layout.module.scss";
 
 function Actors({ extendedCast }: { extendedCast: ExtendedCast }) {
   return (

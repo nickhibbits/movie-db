@@ -1,4 +1,5 @@
 import { fetchData } from "$/utils/fetchData";
+import { formatTitleInfo } from "$/utils/helpers";
 import { TitleInfo } from "$/types/titleInfo";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -11,42 +12,6 @@ function TitleId() {
   const [titleInfo, setTitleInfo] = useState<TitleInfo>();
   const router = useRouter();
   const titleId = router.query.titleId;
-
-  const formatTitleInfo = (data: any) => {
-    const {
-      genres,
-      id,
-      plot,
-      primaryImage,
-      ratingsSummary,
-      releaseDate,
-      releaseYear,
-      runtime,
-      titleText,
-      titleType,
-    } = data.base_info;
-
-    const extendedCast = data.extendedCast.cast.edges.map((castMember: any) => {
-      const { characters, episodeCredits, name } = castMember.node;
-
-      return { characters, episodeCredits, name };
-    });
-    let titleInfo: TitleInfo = {
-      extendedCast,
-      genres,
-      id,
-      plot,
-      primaryImage,
-      ratingsSummary,
-      releaseDate,
-      releaseYear,
-      runtime,
-      titleText,
-      titleType,
-    };
-
-    return titleInfo;
-  };
 
   useEffect(() => {
     if (titleId) {
