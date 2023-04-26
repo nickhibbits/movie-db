@@ -1,10 +1,14 @@
+import { fetchData } from "$/utils/fetchData";
+import { TitleInfo } from "$/types/titleInfo";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { fetchData } from "$/utils/fetchData";
 
 import Link from "next/link";
 import Layout from "$/components/composition/Layout";
-import { TitleInfo } from "$/types/titleInfo";
+import Card from "$/components/block/Card";
+
+import layoutClasses from "$/styles/Layout.module.scss";
+import ScrollContainer from "$/components/composition/ScrollContainer";
 
 function TitleId() {
   const [titleInfo, setTitleInfo] = useState<TitleInfo>();
@@ -53,16 +57,12 @@ function TitleId() {
         const url = `/api/titles/searchTitlesById?titleId=${titleId}`;
         const data = await fetchData(url).then((data) => formatTitleInfo(data));
 
-        console.log("data", data);
-        console.log("🟢 titleInfo set");
         setTitleInfo(data);
       };
 
       getTitleInfo();
     }
   }, [titleId]);
-
-  console.log("titleInfo", titleInfo);
 
   return (
     <Layout>
@@ -90,27 +90,25 @@ function TitleId() {
         <h2>Overview</h2>
         <p className="plot">{titleInfo?.plot.plotText.plainText}</p>
       </section>
-      <section className="extended-cast-wrapper">
+      <ScrollContainer>
         <h2>Cast</h2>
-        <ul>
+        <ul className={layoutClasses.cardLayout}>
           {titleInfo?.extendedCast &&
             titleInfo.extendedCast.length > 0 &&
             titleInfo.extendedCast.map((cast) => {
               return (
-                <li className="castMemberWrapper">
-                  <img
-                    src={
-                      cast.name.primaryImage ? cast.name.primaryImage.url : ""
-                    }
-                    alt=""
-                  />
-                  <p className="actor-name">{cast.name.nameText.text}</p>
-                  <p className="character-name">{cast.characters[0].name}</p>
-                </li>
+                <Card
+                  baseUrl="/actors/"
+                  alternateSvg="./motion-picture-film-svgrepo-com.svg"
+                  id={cast.name.id}
+                  primaryImage={cast.name.primaryImage}
+                  secondaryText={cast.characters[0].name}
+                  mainText={cast.name.nameText.text}
+                />
               );
             })}
         </ul>
-      </section>
+      </ScrollContainer>
       <Link href="/actor/test-actor-id"></Link>
     </Layout>
   );

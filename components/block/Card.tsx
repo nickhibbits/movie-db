@@ -1,37 +1,35 @@
 import React from "react";
-import { PrimaryImage, ReleaseYear } from "$/types/titleResults";
+import { PrimaryImage } from "$/types/titleResults";
 import Link from "next/link";
 
 import classes from "$/styles/Card.module.scss";
 
 function Card({
+  baseUrl,
+  alternateSvg,
   id,
   primaryImage,
-  releaseYear,
-  titleText,
+  secondaryText,
+  mainText,
 }: {
+  baseUrl: string;
+  alternateSvg: string;
   id: string;
   primaryImage: PrimaryImage | null;
-  releaseYear: ReleaseYear | null;
-  titleText: { text: string };
+  mainText: string;
+  secondaryText: string | number;
 }) {
   return (
-    <Link href={`/title/${id}`}>
+    <Link href={`${baseUrl}/${id}`}>
       <div className={classes.cardBlock}>
         <img
-          src={
-            primaryImage
-              ? `${primaryImage.url}`
-              : `./motion-picture-film-svgrepo-com.svg`
-          }
-          alt={`${titleText.text} cover`}
+          src={primaryImage ? primaryImage.url : alternateSvg}
+          alt={`${mainText} cover`}
           className={primaryImage ? classes.image : classes.svg}
         />
 
-        <p className={classes.cardText}>{titleText.text}</p>
-        <p className={classes.cardText}>
-          {releaseYear ? releaseYear.year : ""}
-        </p>
+        <p className={classes.cardText}>{mainText}</p>
+        <p className={classes.cardText}>{secondaryText ? secondaryText : ""}</p>
       </div>
     </Link>
   );

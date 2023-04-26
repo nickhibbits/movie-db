@@ -3,7 +3,7 @@ import { Result } from "$/types/titleResults";
 
 import Card from "$/components/block/Card";
 import Layout from "$/components/composition/Layout";
-import TitleRow from "$/components/composition/TitleRow";
+import ScrollContainer from "$/components/composition/ScrollContainer";
 
 import layoutClasses from "$/styles/Layout.module.scss";
 
@@ -38,7 +38,7 @@ function Results({ results }: { results: string }) {
 
         if (titles.length > 0) {
           return (
-            <TitleRow key={titleType}>
+            <ScrollContainer>
               <h2 className={layoutClasses.titleRowHeader}>{titleType}</h2>
               <ul className={layoutClasses.cardLayout}>
                 {titles.map((title) => {
@@ -47,16 +47,18 @@ function Results({ results }: { results: string }) {
                   return (
                     <li key={id}>
                       <Card
+                        baseUrl="/title/"
+                        alternateSvg="./motion-picture-film-svgrepo-com.svg"
                         id={id}
                         primaryImage={primaryImage}
-                        releaseYear={releaseYear}
-                        titleText={titleText}
+                        mainText={titleText.text}
+                        secondaryText={releaseYear.year}
                       />
                     </li>
                   );
                 })}
               </ul>
-            </TitleRow>
+            </ScrollContainer>
           );
         }
       })}
