@@ -1,7 +1,7 @@
 import React from "react";
 import { Result } from "$/types/titleResults";
 
-import Card from "$/components/block/Card";
+import Card from "$/components/utility/Card";
 import Layout from "$/components/composition/Layout";
 import ScrollContainer from "$/components/composition/ScrollContainer";
 
@@ -42,17 +42,18 @@ function Results({ results }: { results: string }) {
               <h2 className={layoutClasses.titleRowHeader}>{titleType}</h2>
               <ul className={layoutClasses.cardLayout}>
                 {titles.map((title) => {
+                  console.log("title", title);
                   const { id, primaryImage, releaseYear, titleText } = title;
 
                   return (
                     <li key={id}>
                       <Card
-                        baseUrl="/title/"
+                        baseUrl="/title"
                         alternateSvg="./motion-picture-film-svgrepo-com.svg"
                         id={id}
                         primaryImage={primaryImage}
                         mainText={titleText.text}
-                        secondaryText={releaseYear.year}
+                        secondaryText={releaseYear ? releaseYear.year : ""}
                       />
                     </li>
                   );

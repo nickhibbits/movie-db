@@ -3,12 +3,8 @@ import { TitleInfo } from "$/types/titleInfo";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-import Link from "next/link";
+import Actors from "$/components/block/Actors";
 import Layout from "$/components/composition/Layout";
-import Card from "$/components/block/Card";
-
-import layoutClasses from "$/styles/Layout.module.scss";
-import ScrollContainer from "$/components/composition/ScrollContainer";
 
 function TitleId() {
   const [titleInfo, setTitleInfo] = useState<TitleInfo>();
@@ -90,26 +86,10 @@ function TitleId() {
         <h2>Overview</h2>
         <p className="plot">{titleInfo?.plot.plotText.plainText}</p>
       </section>
-      <ScrollContainer>
-        <h2>Cast</h2>
-        <ul className={layoutClasses.cardLayout}>
-          {titleInfo?.extendedCast &&
-            titleInfo.extendedCast.length > 0 &&
-            titleInfo.extendedCast.map((cast) => {
-              return (
-                <Card
-                  baseUrl="/actors/"
-                  alternateSvg="./motion-picture-film-svgrepo-com.svg"
-                  id={cast.name.id}
-                  primaryImage={cast.name.primaryImage}
-                  secondaryText={cast.characters[0].name}
-                  mainText={cast.name.nameText.text}
-                />
-              );
-            })}
-        </ul>
-      </ScrollContainer>
-      <Link href="/actor/test-actor-id"></Link>
+
+      {titleInfo?.extendedCast && titleInfo.extendedCast.length > 0 && (
+        <Actors extendedCast={titleInfo.extendedCast} />
+      )}
     </Layout>
   );
 }

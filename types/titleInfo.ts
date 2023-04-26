@@ -8,7 +8,7 @@ export interface TitleInfo extends Result {
   extendedCast: ExtendedCast;
 }
 
-type ExtendedCast = CastMember[];
+export type ExtendedCast = CastMember[];
 
 type CastMember = {
   characters: { name: string }[];

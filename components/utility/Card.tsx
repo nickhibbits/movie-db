@@ -29,7 +29,7 @@ function Card({
         />
 
         <p className={classes.cardText}>{mainText}</p>
-        <p className={classes.cardText}>{secondaryText ? secondaryText : ""}</p>
+        <p className={classes.cardText}>{secondaryText}</p>
       </div>
     </Link>
   );

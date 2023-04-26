@@ -25,7 +25,7 @@ function Search() {
       <input
         className={classes.input}
         type="text"
-        placeholder="Search movies by title"
+        placeholder="Search titles"
         ref={title}
       />
       <button className={classes.button} type="submit">
