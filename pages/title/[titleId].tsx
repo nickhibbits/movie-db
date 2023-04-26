@@ -55,7 +55,7 @@ function TitleId() {
 
         console.log("data", data);
         console.log("🟢 titleInfo set");
-        return data;
+        setTitleInfo(data);
       };
 
       getTitleInfo();
@@ -67,8 +67,30 @@ function TitleId() {
   return (
     <Layout>
       <img src={titleInfo?.primaryImage.url} alt="" />
-
-      <Link href="/actor/test-actor-id">Ello</Link>
+      <section className="title-info-wrapper">
+        <h1>
+          {titleInfo?.titleText.text} ({titleInfo?.releaseYear.year})
+        </h1>
+        <div className="main-info">
+          <div className="rating"></div>
+          <p className="release-date">
+            {titleInfo?.releaseDate.month}/{titleInfo?.releaseDate.day}/
+            {titleInfo?.releaseDate.year}
+          </p>
+          {titleInfo?.genres &&
+            titleInfo.genres.length > 0 &&
+            titleInfo?.genres.map((genre) => {
+              return <p className="genre">{genre.text}</p>;
+            })}
+          {/* convert seconds to hours and minutes */}
+          <p className="runtime">{titleInfo?.runtime.seconds}</p>
+        </div>
+      </section>
+      <section className="extended-info-wrapper">
+        <h2>Overview</h2>
+        <p className="plot">{titleInfo?.plot.plotText.plainText}</p>
+      </section>
+      <Link href="/actor/test-actor-id"></Link>
     </Layout>
   );
 }
