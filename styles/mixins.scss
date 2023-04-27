@@ -9,8 +9,12 @@
 }
 
 // Utility
-@mixin scrollXContainer {
-  overflow-x: scroll;
+@mixin imageBaseStyle {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 // Block
@@ -29,11 +33,7 @@
   & .image {
     // border: solid 2px red;
     position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    @include imageBaseStyle;
     z-index: 1;
     border-radius: inherit;
     -webkit-mask-image: -webkit-gradient(
@@ -78,6 +78,5 @@
     &:nth-of-type(2) {
       font-size: variables.$fs-300;
     }
-    // color: variables.$color-neutral-100;
   }
 }

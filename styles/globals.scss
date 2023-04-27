@@ -49,10 +49,11 @@ a {
 .header {
   font-size: variables.$fs-900;
   font-weight: variables.$fw-400;
+  line-height: 95%;
 }
 
 .subheader {
-  font-size: variables.$fs-600;
+  font-size: variables.$fs-700;
 }
 
 .text {

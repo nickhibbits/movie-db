@@ -39,7 +39,7 @@ function Results({ results }: { results: string }) {
         if (titles.length > 0) {
           return (
             <ScrollContainer>
-              <h2 className={layoutClasses.titleRowHeader}>{titleType}</h2>
+              <h2 className="subheader">{titleType}</h2>
               <ul className={layoutClasses.cardLayout}>
                 {titles.map((title) => {
                   console.log("title", title);

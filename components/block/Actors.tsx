@@ -10,7 +10,7 @@ import layoutClasses from "$/styles/composition/Layout.module.scss";
 function Actors({ extendedCast }: { extendedCast: ExtendedCast }) {
   return (
     <ScrollContainer>
-      <h2>Cast</h2>
+      <h2 className="subheader">Cast</h2>
       <ul className={layoutClasses.cardLayout}>
         {extendedCast.map((cast) => {
           return (

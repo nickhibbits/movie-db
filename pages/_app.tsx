@@ -14,9 +14,6 @@ export default function App({ Component, pageProps }: AppProps) {
           html {
             font-family: ${raleway.style.fontFamily};
           }
-          .subheader {
-            font-family: ${josefin_sans.style.fontFamily};
-          }
           .text {
             font-family: ${overpass.style.fontFamily};
           }
