@@ -1,6 +1,7 @@
-import React from "react";
-import { PrimaryImage } from "$/types/titleResults";
 import Link from "next/link";
+import React from "react";
+
+import { PrimaryImage } from "$/types/titleResults";
 
 import classes from "$/styles/block/Card.module.scss";
 
@@ -33,7 +34,6 @@ function Card({
             src={primaryImage ? primaryImage.url : alternateSvg}
             alt={`${mainText} cover`}
             className={classes.primaryImage}
-            // className={primaryImage ? classes.image : classes.svg}
           />
         </div>
         <div className={classes.cardInfoWrapper}>
