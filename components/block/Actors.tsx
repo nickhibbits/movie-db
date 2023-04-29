@@ -17,7 +17,7 @@ function Actors({ extendedCast }: { extendedCast: ExtendedCast }) {
             <li key={cast.name.id}>
               <Card
                 baseUrl="/actors"
-                alternateSvg="./motion-picture-film-svgrepo-com.svg"
+                alternateSvg="/person-svgrepo-com.svg"
                 id={cast.name.id}
                 primaryImage={cast.name.primaryImage}
                 secondaryText={cast.characters[0].name}
