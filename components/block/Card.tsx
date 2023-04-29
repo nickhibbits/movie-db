@@ -21,15 +21,25 @@ function Card({
 }) {
   return (
     <Link href={`${baseUrl}/${id}`}>
-      <div className={classes.cardBlock}>
-        <img
-          src={primaryImage ? primaryImage.url : alternateSvg}
-          alt={`${mainText} cover`}
-          className={primaryImage ? classes.image : classes.svg}
-        />
-
-        <p className={classes.cardText}>{mainText}</p>
-        <p className={classes.cardText}>{secondaryText}</p>
+      <div
+        className={`${classes.cardBlock} ${
+          primaryImage ? classes.cardBlockImage : classes.cardBlockSvg
+        }`}
+      >
+        <div
+          className={primaryImage ? classes.imageWrapper : classes.svgWrapper}
+        >
+          <img
+            src={primaryImage ? primaryImage.url : alternateSvg}
+            alt={`${mainText} cover`}
+            className={classes.primaryImage}
+            // className={primaryImage ? classes.image : classes.svg}
+          />
+        </div>
+        <div className={classes.cardInfoWrapper}>
+          <p className={classes.cardText}>{mainText}</p>
+          <p className={classes.cardText}>{secondaryText}</p>
+        </div>
       </div>
     </Link>
   );

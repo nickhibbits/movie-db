@@ -2,5 +2,27 @@
 @use "$/styles/mixins";
 
 .cardBlock {
-  @include mixins.cardBaseStyle;
+  &Image {
+    @include mixins.cardBaseStyle(flex-end, absolute);
+
+    .imageWrapper {
+      border-radius: inherit;
+    }
+  }
+
+  &Svg {
+    @include mixins.cardBaseStyle(flex-start, relative);
+
+    .svgWrapper {
+      outline: solid 1px red;
+    }
+
+    .cardInfoWrapper {
+      outline: solid 2px green;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 0.98;
+      justify-content: flex-end;
+    }
+  }
 }
