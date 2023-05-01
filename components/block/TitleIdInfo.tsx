@@ -14,7 +14,6 @@ function TitleIdInfo({ titleInfo }: { titleInfo: TitleInfo }) {
     titleText,
   } = titleInfo;
 
-  console.log("titleInfo", titleInfo);
   return (
     <div className={layout.titleIdInfoContainer}>
       <div className={layout.imageWrapper}>

@@ -1,3 +1,10 @@
+export type _ResultsByTitleType = {
+  movie: Result[];
+  pocastSeries: Result[];
+  tvMovie: Result[];
+  tvSeries: Result[];
+};
+
 export type Result = {
   id: string;
   primaryImage: PrimaryImage;
