@@ -6,6 +6,7 @@ import Layout from "$/components/composition/Layout";
 import ScrollContainer from "$/components/composition/ScrollContainer";
 
 import layoutClasses from "$/styles/composition/Layout.module.scss";
+import TitleRow from "$/components/block/TitleRow";
 
 function Results({ results }: { results: string }) {
   const _results = JSON.parse(results);
@@ -13,7 +14,7 @@ function Results({ results }: { results: string }) {
 
   return (
     <Layout>
-      {Object.entries(_results).map((result, i) => {
+      {Object.entries(_results).map((result) => {
         let titleType = "Other";
 
         switch (result[0]) {
@@ -37,30 +38,7 @@ function Results({ results }: { results: string }) {
         const titles = result[1] as Result[];
 
         if (titles.length > 0) {
-          return (
-            <ScrollContainer>
-              <h2 className="subheader">{titleType}</h2>
-              <ul className={layoutClasses.cardLayout}>
-                {titles.map((title) => {
-                  console.log("title", title);
-                  const { id, primaryImage, releaseYear, titleText } = title;
-
-                  return (
-                    <li key={id}>
-                      <Card
-                        baseUrl="/title"
-                        alternateSvg="./motion-picture-film-svgrepo-com.svg"
-                        id={id}
-                        primaryImage={primaryImage}
-                        mainText={titleText.text}
-                        secondaryText={releaseYear ? releaseYear.year : ""}
-                      />
-                    </li>
-                  );
-                })}
-              </ul>
-            </ScrollContainer>
-          );
+          return <TitleRow titleType={titleType} titles={titles} />;
         }
       })}
     </Layout>
