@@ -1,7 +1,7 @@
 import { TitleInfo } from "$/types/titleInfo";
 import React from "react";
 
-import layout from "$/styles/composition/Layout.module.scss";
+import classes from "$/styles/block/TitleIdInfo.module.scss";
 
 function TitleIdInfo({ titleInfo }: { titleInfo: TitleInfo }) {
   const {
@@ -14,18 +14,21 @@ function TitleIdInfo({ titleInfo }: { titleInfo: TitleInfo }) {
     titleText,
   } = titleInfo;
 
+  function saveToFavorites() {
+    console.log("save to favorites");
+  }
+
   return (
-    <div className={layout.titleIdInfoContainer}>
-      <div className={layout.imageWrapper}>
-        <img src={primaryImage.url} alt="" />
+    <div className={classes.titleIdInfoContainer}>
+      <div className={classes.imageWrapper}>
+        <img src={primaryImage.url} alt="movie cover" />
       </div>
-      <div className={layout.infoContainer}>
+      <div className={classes.infoContainer}>
         <section className="main-info-wrapper">
           <h1 className="header">
             {titleText.text} {releaseYear && `(${releaseYear.year})`}
           </h1>
-          <div className={layout.mainInfo}>
-            {/* <div className="rating"></div> */}
+          <div className={classes.mainInfo}>
             <p className="release-date">
               {releaseDate &&
                 `${releaseDate.month}/${releaseDate.day}/${releaseDate.year}`}
@@ -38,7 +41,16 @@ function TitleIdInfo({ titleInfo }: { titleInfo: TitleInfo }) {
             <p className="runtime">{runtime && runtime.seconds}</p>
           </div>
         </section>
-        <section className={layout.extendedInfo}>
+        <section className={classes.iconsWrapper}>
+          {/* <div className="rating"></div> */}
+          <div
+            className={classes.iconWrapper}
+            onClick={() => saveToFavorites()}
+          >
+            <img src="/heart-circle-svgrepo-com.svg" alt="favorite icon" />
+          </div>
+        </section>
+        <section className={classes.extendedInfoWrapper}>
           <h2 className="subheader">Overview</h2>
           <p className="plot">{plot.plotText.plainText}</p>
         </section>
