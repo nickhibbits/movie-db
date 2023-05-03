@@ -1,6 +1,7 @@
 import { PrimaryImage, Result } from "$/types/titleResults";
 
 export interface TitleInfo extends Result {
+  id: string;
   genres: { text: string; id: string }[];
   plot: { plotText: { plainText: string } };
   ratingsSummary: { aggregateRating: number };

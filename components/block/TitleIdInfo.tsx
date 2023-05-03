@@ -1,10 +1,17 @@
 import { TitleInfo } from "$/types/titleInfo";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 
 import classes from "$/styles/block/TitleIdInfo.module.scss";
+import { AppContext, useFavoritesContext } from "$/components/context/state";
+// import { useAppContext } from "$/components/context/state";
 
 function TitleIdInfo({ titleInfo }: { titleInfo: TitleInfo }) {
+  const context = useFavoritesContext();
+
+  const [favorites = [], setFavorites] = context || [];
+
   const {
+    id,
     genres,
     plot,
     primaryImage,
@@ -14,8 +21,16 @@ function TitleIdInfo({ titleInfo }: { titleInfo: TitleInfo }) {
     titleText,
   } = titleInfo;
 
+  useEffect(() => {
+    console.log("updated favorites", favorites);
+  }, [favorites]);
+
   function saveToFavorites() {
-    console.log("save to favorites");
+    console.log("favorites", favorites);
+
+    setFavorites?.([...favorites, id]);
+
+    console.log("save to favorites", id);
   }
 
   return (
