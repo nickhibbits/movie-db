@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
-export type UseFavorites = [
-  string[],
-  React.Dispatch<React.SetStateAction<string[]>>
-];
+export type UseFavorites = {
+  favorites: string[];
+  setFavorites: React.Dispatch<React.SetStateAction<string[]>>;
+};
 
 export const useFavorites = (newFavoriteId?: string): UseFavorites => {
   const [favorites, setFavorites] = useState<string[]>([]);
@@ -15,5 +15,5 @@ export const useFavorites = (newFavoriteId?: string): UseFavorites => {
       });
   }, [newFavoriteId]);
 
-  return [favorites, setFavorites];
+  return { favorites, setFavorites };
 };

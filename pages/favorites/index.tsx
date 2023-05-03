@@ -4,17 +4,16 @@ import ResultsByTitleType from "$/pages/results/ResultsByTitleType";
 import Layout from "$/components/composition/Layout";
 
 import { _ResultsByTitleType } from "$/types/titleResults";
-import { useFavoritesContext } from "$/components/context/state";
+import { AppWrapper, useFavoritesContext } from "$/components/context/state";
+import Container from "$/pages/favorites/Container";
 
 // function Favorites({ results }: { results: _ResultsByTitleType }) {
 function Favorites() {
-  const context = useFavoritesContext();
-
-  const [favorites = [], setFavorites] = context || [];
-
-  console.log("favorites", favorites);
-
-  return <Layout>{/* <ResultsByTitleType results={favorites} /> */}</Layout>;
+  return (
+    <AppWrapper>
+      <Container />
+    </AppWrapper>
+  );
 }
 
 export default Favorites;

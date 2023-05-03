@@ -20,9 +20,8 @@ export default function App({ Component, pageProps }: AppProps) {
           }
         `}
       </style>
-      <AppWrapper>
-        <Component {...pageProps} />
-      </AppWrapper>
+
+      <Component {...pageProps} />
     </>
   );
 }

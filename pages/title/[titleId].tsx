@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import Actors from "$/components/block/Actors";
 import Layout from "$/components/composition/Layout";
 import TitleIdInfo from "$/components/block/TitleIdInfo";
+import { AppWrapper } from "$/components/context/state";
 
 function TitleId() {
   const [titleInfo, setTitleInfo] = useState<TitleInfo>();
@@ -27,13 +28,15 @@ function TitleId() {
   }, [titleId]);
 
   return (
-    <Layout>
-      {titleInfo && <TitleIdInfo titleInfo={titleInfo} />}
+    <AppWrapper>
+      <Layout>
+        {titleInfo && <TitleIdInfo titleInfo={titleInfo} />}
 
-      {titleInfo?.extendedCast && titleInfo.extendedCast.length > 0 && (
-        <Actors extendedCast={titleInfo.extendedCast} />
-      )}
-    </Layout>
+        {titleInfo?.extendedCast && titleInfo.extendedCast.length > 0 && (
+          <Actors extendedCast={titleInfo.extendedCast} />
+        )}
+      </Layout>
+    </AppWrapper>
   );
 }
 
