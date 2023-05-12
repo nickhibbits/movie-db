@@ -1,0 +1,12 @@
+@use "$/styles/mixins";
+@use "$/styles/variables";
+
+.nav {
+  padding: variables.$padding2;
+  border-bottom: solid 1px variables.$color-neutral-100;
+}
+
+.nav_options_wrapper {
+  display: flex;
+  gap: 1.5rem;
+}

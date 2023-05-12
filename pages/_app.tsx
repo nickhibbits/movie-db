@@ -1,3 +1,4 @@
+import Navbar from "$/components/block/Navbar";
 import { AppContextWrapper } from "$/components/context/state";
 import "$/styles/globals.scss";
 import type { AppProps } from "next/app";
@@ -21,6 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
         `}
       </style>
       <AppContextWrapper>
+        <Navbar />
         <Component {...pageProps} />
       </AppContextWrapper>
     </>
