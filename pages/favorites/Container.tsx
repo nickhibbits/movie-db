@@ -1,17 +1,15 @@
 import Layout from "$/components/composition/Layout";
-import {
-  FavoritesContextWrapper,
-  useFavoritesContext,
-} from "$/components/context/state";
-import React from "react";
+import { AppContext } from "$/components/context/state";
+import React, { useContext } from "react";
 
 function Container() {
-  const context = useFavoritesContext();
+  const { state, dispatch } = useContext(AppContext);
 
-  console.log("container", context);
+  console.log("state", state);
 
-  if (!!context) {
-    const { favorites } = context;
+  if (!!state.favorites) {
+    const { favorites } = state;
+    console.log("favorites", favorites);
 
     console.log("favorites", favorites);
     return <Layout>{/* <ResultsByTitleType results={favorites} /> */}</Layout>;

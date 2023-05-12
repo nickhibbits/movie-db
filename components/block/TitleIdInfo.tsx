@@ -2,17 +2,14 @@ import { TitleInfo } from "$/types/titleInfo";
 import React, { useContext, useEffect } from "react";
 
 import classes from "$/styles/block/TitleIdInfo.module.scss";
-import {
-  FavoritesContext,
-  useFavoritesContext,
-} from "$/components/context/state";
+import { AppContext, addFavorite } from "$/components/context/state";
 // import { useAppContext } from "$/components/context/state";
 
 function TitleIdInfo({ titleInfo }: { titleInfo: TitleInfo }) {
-  const context = useFavoritesContext();
+  const { state, dispatch } = useContext(AppContext);
 
-  if (!!context) {
-    const { favorites, setFavorites } = context;
+  if (!!state.favorites) {
+    const { favorites } = state;
 
     const {
       id,
@@ -25,17 +22,13 @@ function TitleIdInfo({ titleInfo }: { titleInfo: TitleInfo }) {
       titleText,
     } = titleInfo;
 
-    useEffect(() => {
-      console.log("updated favorites", favorites);
-    }, [favorites]);
-
-    const saveToFavorites = () => {
-      console.log("favorites", favorites);
-
-      setFavorites?.([...favorites, id]);
-
-      console.log("save to favorites", id);
+    const handleAddFavorite = () => {
+      dispatch(addFavorite(id));
     };
+
+    useEffect(() => {
+      console.log("favorites updated", favorites);
+    }, [favorites]);
 
     return (
       <div className={classes.titleIdInfoContainer}>
@@ -64,7 +57,7 @@ function TitleIdInfo({ titleInfo }: { titleInfo: TitleInfo }) {
             {/* <div className="rating"></div> */}
             <div
               className={classes.iconWrapper}
-              onClick={() => saveToFavorites()}
+              onClick={() => handleAddFavorite()}
             >
               <img src="/heart-circle-svgrepo-com.svg" alt="favorite icon" />
             </div>
@@ -78,7 +71,7 @@ function TitleIdInfo({ titleInfo }: { titleInfo: TitleInfo }) {
     );
   }
 
-  return <div className=""> Loading</div>;
+  return <div className=""> Loading... or no favorites...?</div>;
 }
 
 export default TitleIdInfo;

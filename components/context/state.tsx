@@ -4,7 +4,7 @@ import React, { createContext, useReducer } from "react";
 type Action = {
   type: string;
   id?: string;
-  index: number;
+  index?: number;
 };
 
 type GlobalState = {
@@ -15,6 +15,20 @@ const ACTIONS = {
   ADD_FAVORITE: "toggle-favorite",
   REMOVE_FAVORITE: "remove-favorite",
 };
+
+export function addFavorite(id: string): Action {
+  return {
+    type: ACTIONS.ADD_FAVORITE,
+    id,
+  };
+}
+
+export function removeFavorite(index: number): Action {
+  return {
+    type: ACTIONS.REMOVE_FAVORITE,
+    index,
+  };
+}
 
 const initialState: GlobalState = {
   favorites: [],
@@ -34,7 +48,7 @@ const reducer = (state: GlobalState, action: Action) => {
       return {
         favorites: [
           ...state.favorites.slice(0, action.index),
-          ...state.favorites.slice(action.index + 1),
+          ...state.favorites.slice(action.index && action.index + 1),
         ],
       };
     default:
@@ -42,18 +56,18 @@ const reducer = (state: GlobalState, action: Action) => {
   }
 };
 
-export const FavoritesContext = createContext<any>(initialState);
+export const AppContext = createContext<any>(initialState);
 
-export function FavoritesContextWrapper({ children }: Props) {
+export function AppContextWrapper({ children }: Props) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <FavoritesContext.Provider value={{ state, dispatch }}>
+    <AppContext.Provider value={{ state, dispatch }}>
       {children}
-    </FavoritesContext.Provider>
+    </AppContext.Provider>
   );
 }
 
 export function useFavoritesContext() {
-  return React.useContext(FavoritesContext);
+  return React.useContext(AppContext);
 }
