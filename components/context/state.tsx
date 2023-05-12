@@ -1,25 +1,59 @@
 import { Props } from "$/types/props";
-import { UseFavorites, useFavorites } from "$/utils/customHooks/useFavorites";
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useReducer } from "react";
 
-export const AppContext = createContext<UseFavorites | undefined>(undefined);
-// export const AppContext = createContext({favorites, setFavorites}: {favorites, setFavortes} as AppState);
+type Action = {
+  type: string;
+  id?: string;
+  index: number;
+};
 
-// TODO
-// rename to FavoritesWrapper
-// wrap only relevant pages, /[titleId] and /favorites
+type GlobalState = {
+  favorites: (string | undefined)[];
+};
 
-export function AppWrapper({ children }: Props) {
-  const { favorites, setFavorites } = useFavorites();
-  // const setFavoritesTyped = setFavorites as React.Dispatch<React.SetStateAction<string[]>>;
+const ACTIONS = {
+  ADD_FAVORITE: "toggle-favorite",
+  REMOVE_FAVORITE: "remove-favorite",
+};
+
+const initialState: GlobalState = {
+  favorites: [],
+};
+
+const reducer = (state: GlobalState, action: Action) => {
+  switch (action.type) {
+    case ACTIONS.ADD_FAVORITE:
+      return {
+        favorites: [
+          ...state.favorites.slice(0, action.index),
+          action.id,
+          ...state.favorites.slice(action.index),
+        ],
+      };
+    case ACTIONS.REMOVE_FAVORITE:
+      return {
+        favorites: [
+          ...state.favorites.slice(0, action.index),
+          ...state.favorites.slice(action.index + 1),
+        ],
+      };
+    default:
+      return state;
+  }
+};
+
+export const FavoritesContext = createContext<any>(initialState);
+
+export function FavoritesContextWrapper({ children }: Props) {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <AppContext.Provider value={{ favorites, setFavorites }}>
+    <FavoritesContext.Provider value={{ state, dispatch }}>
       {children}
-    </AppContext.Provider>
+    </FavoritesContext.Provider>
   );
 }
 
 export function useFavoritesContext() {
-  return React.useContext(AppContext);
+  return React.useContext(FavoritesContext);
 }

@@ -1,5 +1,8 @@
 import Layout from "$/components/composition/Layout";
-import { AppWrapper, useFavoritesContext } from "$/components/context/state";
+import {
+  FavoritesContextWrapper,
+  useFavoritesContext,
+} from "$/components/context/state";
 import React from "react";
 
 function Container() {

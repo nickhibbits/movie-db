@@ -1,4 +1,4 @@
-import { AppWrapper } from "$/components/context/state";
+import { FavoritesContextWrapper } from "$/components/context/state";
 import "$/styles/globals.scss";
 import type { AppProps } from "next/app";
 import { Raleway, Josefin_Sans, Overpass } from "next/font/google";

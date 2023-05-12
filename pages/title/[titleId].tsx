@@ -7,7 +7,8 @@ import { useEffect, useState } from "react";
 import Actors from "$/components/block/Actors";
 import Layout from "$/components/composition/Layout";
 import TitleIdInfo from "$/components/block/TitleIdInfo";
-import { AppWrapper } from "$/components/context/state";
+import { FavoritesContextWrapper } from "$/components/context/state";
+import Link from "next/link";
 
 function TitleId() {
   const [titleInfo, setTitleInfo] = useState<TitleInfo>();
@@ -28,15 +29,17 @@ function TitleId() {
   }, [titleId]);
 
   return (
-    <AppWrapper>
+    <FavoritesContextWrapper>
       <Layout>
         {titleInfo && <TitleIdInfo titleInfo={titleInfo} />}
 
         {titleInfo?.extendedCast && titleInfo.extendedCast.length > 0 && (
           <Actors extendedCast={titleInfo.extendedCast} />
         )}
+
+        <Link href="/favorites">Favorites</Link>
       </Layout>
-    </AppWrapper>
+    </FavoritesContextWrapper>
   );
 }
 

@@ -2,7 +2,10 @@ import { TitleInfo } from "$/types/titleInfo";
 import React, { useContext, useEffect } from "react";
 
 import classes from "$/styles/block/TitleIdInfo.module.scss";
-import { AppContext, useFavoritesContext } from "$/components/context/state";
+import {
+  FavoritesContext,
+  useFavoritesContext,
+} from "$/components/context/state";
 // import { useAppContext } from "$/components/context/state";
 
 function TitleIdInfo({ titleInfo }: { titleInfo: TitleInfo }) {
