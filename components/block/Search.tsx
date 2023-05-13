@@ -3,9 +3,11 @@ import { formatTitle } from "$/utils/helpers";
 import { fetchData } from "$/utils/fetchData";
 
 import classes from "$/styles/block/Search.module.scss";
+import { useRouter } from "next/router";
 
 function Search() {
   const title = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   async function handleSelect(e: any) {
     e.preventDefault();
@@ -14,9 +16,12 @@ function Search() {
         title.current && formatTitle(title.current.value)
       }`;
 
-      const redirectPage = "/results";
+      const res = await fetchData(url);
 
-      fetchData(url, redirectPage);
+      router.push({
+        pathname: "/results",
+        query: { results: JSON.stringify(res) },
+      });
     }
   }
 

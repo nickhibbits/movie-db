@@ -1,18 +1,12 @@
 import Layout from "$/components/composition/Layout";
+import ResultsByTitleType from "$/pages/results/ResultsByTitleType";
 import { useFavorites } from "$/state/AppContextWrapper";
 import React from "react";
 
 function Container() {
-  const { favorites, setFavorites } = useFavorites();
+  return <Layout>{/* <ResultsByTitleType /> */}</Layout>;
 
-  if (favorites) {
-    console.log("favorites", favorites);
-
-    console.log("favorites", favorites);
-    return <Layout>{/* <ResultsByTitleType results={favorites} /> */}</Layout>;
-  }
-
-  return <div className="loading"> loading</div>;
+  // return <div className="loading"> loading</div>;
 }
 
 export default Container;

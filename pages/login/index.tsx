@@ -5,7 +5,7 @@ import React from "react";
 
 function Login() {
   const router = useRouter();
-  const { loggedIn, setLoggedIn } = useAuth();
+  const { setLoggedIn } = useAuth();
 
   const handleLogin = (e: any) => {
     e.preventDefault();

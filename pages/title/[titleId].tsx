@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import Actors from "$/components/block/Actors";
 import Layout from "$/components/composition/Layout";
 import TitleIdInfo from "$/components/block/TitleIdInfo";
-import Link from "next/link";
 
 function TitleId() {
   const [titleInfo, setTitleInfo] = useState<TitleInfo>();
@@ -34,8 +33,6 @@ function TitleId() {
       {titleInfo?.extendedCast && titleInfo.extendedCast.length > 0 && (
         <Actors extendedCast={titleInfo.extendedCast} />
       )}
-
-      <Link href="/favorites">Favorites</Link>
     </Layout>
   );
 }
