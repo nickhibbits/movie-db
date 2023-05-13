@@ -1,8 +1,18 @@
 import Head from "next/head";
 import Layout from "$/components/composition/Layout";
 import Search from "$/components/block/Search";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { useAuth } from "$/state/AppContextWrapper";
 
 export default function Home() {
+  const router = useRouter();
+  const { loggedIn } = useAuth();
+
+  useEffect(() => {
+    console.log("loggedIn", loggedIn);
+    !loggedIn && router.push("/login");
+  }, [loggedIn]);
   return (
     <>
       <Head>
