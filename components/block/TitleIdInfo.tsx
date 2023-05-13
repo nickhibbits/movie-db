@@ -2,15 +2,12 @@ import { TitleInfo } from "$/types/titleInfo";
 import React, { useContext, useEffect } from "react";
 
 import classes from "$/styles/block/TitleIdInfo.module.scss";
-import { AppContext, addFavorite } from "$/components/context/state";
-// import { useAppContext } from "$/components/context/state";
+import { AppContext } from "$/state/AppContextWrapper";
 
 function TitleIdInfo({ titleInfo }: { titleInfo: TitleInfo }) {
-  const { state, dispatch } = useContext(AppContext);
+  const { favorites, setFavorites } = useContext(AppContext);
 
-  if (!!state.favorites) {
-    const { favorites } = state;
-
+  if (favorites) {
     const {
       id,
       genres,
@@ -23,7 +20,7 @@ function TitleIdInfo({ titleInfo }: { titleInfo: TitleInfo }) {
     } = titleInfo;
 
     const handleAddFavorite = () => {
-      dispatch(addFavorite(id));
+      setFavorites((current: any) => [...current, id]);
     };
 
     useEffect(() => {
