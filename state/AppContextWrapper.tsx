@@ -2,13 +2,13 @@ import { Props } from "$/types/props";
 import React, { createContext, useReducer, useState } from "react";
 
 const initialState: GlobalState = {
-  favorites: [],
-  auth: {
-    loggedIn: false,
-  },
+  // favorites: [],
+  // setFavorites: null,
+  // loggedIn: false,
+  // setLoggedIn: null,
 };
 
-export const AppContext = createContext<any>(initialState);
+export const AppContext = createContext<GlobalState>(initialState);
 
 export function AppContextWrapper({ children }: Props) {
   const [favorites, setFavorites] = useState([]);

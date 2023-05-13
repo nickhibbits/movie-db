@@ -4,13 +4,11 @@ type Action = {
   index?: number;
 };
 
-type Auth = {
-  loggedIn: boolean;
-};
-
 type Favorites = (string | undefined)[];
 
 type GlobalState = {
-  favorites: Favorites;
-  auth: Auth;
+  favorites?: Favorites;
+  setFavorites?: any;
+  loggedIn?: boolean;
+  setLoggedIn?: any;
 };

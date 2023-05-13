@@ -1,22 +1,10 @@
-import Router from "next/router";
-
 // Client side
-export async function fetchData(
-  url: string,
-  redirectPage: string | null = null
-) {
+export async function fetchData(url: string) {
   try {
     const res = await fetch(url).then((res) => res.json());
 
     if (!res.ok) {
       throw new Error("Bad Response", { cause: res });
-    }
-
-    if (!!redirectPage) {
-      Router.push({
-        pathname: "/results",
-        query: { results: JSON.stringify(res.body) },
-      });
     }
 
     return res.body;
