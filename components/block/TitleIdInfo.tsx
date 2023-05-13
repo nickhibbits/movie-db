@@ -2,10 +2,10 @@ import { TitleInfo } from "$/types/titleInfo";
 import React, { useContext, useEffect } from "react";
 
 import classes from "$/styles/block/TitleIdInfo.module.scss";
-import { AppContext } from "$/state/AppContextWrapper";
+import { useFavorites } from "$/state/AppContextWrapper";
 
 function TitleIdInfo({ titleInfo }: { titleInfo: TitleInfo }) {
-  const { favorites, setFavorites } = useContext(AppContext);
+  const { favorites, setFavorites } = useFavorites();
 
   if (favorites) {
     const {

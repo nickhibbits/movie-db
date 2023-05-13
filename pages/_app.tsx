@@ -24,8 +24,10 @@ export default function App({ Component, pageProps }: AppProps) {
           }
         `}
       </style>
-      <Navbar />
-      <Component {...pageProps} />
+      <AppContextWrapper>
+        <Navbar />
+        <Component {...pageProps} />
+      </AppContextWrapper>
     </>
   );
 }

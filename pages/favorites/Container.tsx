@@ -1,9 +1,9 @@
 import Layout from "$/components/composition/Layout";
-import { AppContext } from "$/state/AppContextWrapper";
-import React, { useContext } from "react";
+import { useFavorites } from "$/state/AppContextWrapper";
+import React from "react";
 
 function Container() {
-  const { favorites, setFavorites } = useContext(AppContext);
+  const { favorites, setFavorites } = useFavorites();
 
   if (favorites) {
     console.log("favorites", favorites);

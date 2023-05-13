@@ -23,6 +23,14 @@ export function AppContextWrapper({ children }: Props) {
   );
 }
 
-export function useFavoritesContext() {
-  return React.useContext(AppContext);
+export function useFavorites() {
+  const { favorites, setFavorites } = React.useContext(AppContext);
+
+  return { favorites, setFavorites };
+}
+
+export function useAuth() {
+  const { loggedIn, setLoggedIn } = React.useContext(AppContext);
+
+  return { loggedIn, setLoggedIn };
 }
