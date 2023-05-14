@@ -5,6 +5,7 @@
   @include mixins.gridBaseStyle;
   min-height: calc(100vh - variables.$nav-height);
   padding: 3rem 0;
+  position: relative;
 }
 
 .scrollContainer {
