@@ -1,10 +1,10 @@
 import { TitleInfo } from "$/types/titleInfo";
-import React, { useContext, useEffect } from "react";
-
-import classes from "$/styles/block/TitleIdInfo.module.scss";
+import React, { useEffect } from "react";
 import { useFavorites } from "$/state/AppContextWrapper";
 import { convertSeconds } from "$/utils/helpers";
-import { alternateMovieSvg, likeButtonSvg } from "$/constants";
+import { likeButtonSvg } from "$/constants";
+
+import classes from "$/styles/block/TitleIdInfo.module.scss";
 
 function TitleIdInfo({ titleInfo }: { titleInfo: TitleInfo }) {
   const { favorites, setFavorites } = useFavorites();

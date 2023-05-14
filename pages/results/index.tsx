@@ -7,11 +7,16 @@ import ResultsByTitleType from "$/pages/results/ResultsByTitleType";
 
 function Results({ results }: { results: string }) {
   const _results = JSON.parse(results) as _ResultsByTitleType;
-  console.log("_results", _results);
+
+  const noResults = Object.values(_results).flat().length === 0;
 
   return (
     <Layout>
-      <ResultsByTitleType results={_results} />
+      {noResults ? (
+        <div> No results for this search</div>
+      ) : (
+        <ResultsByTitleType results={_results} />
+      )}
     </Layout>
   );
 }

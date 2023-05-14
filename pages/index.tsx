@@ -11,7 +11,6 @@ export default function Home() {
   const { loggedIn } = useAuth();
 
   useEffect(() => {
-    console.log("loggedIn", loggedIn);
     !loggedIn && router.push("/login");
   }, [loggedIn]);
   return (

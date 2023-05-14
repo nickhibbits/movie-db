@@ -12,6 +12,7 @@
 
     img {
       @include mixins.imageBaseStyle;
+      border-radius: variables.$border-radius-1;
     }
   }
 
@@ -25,6 +26,7 @@
       display: flex;
       justify-content: flex-start;
       gap: 1rem;
+      margin-top: 4px;
     }
 
     .iconsWrapper {
