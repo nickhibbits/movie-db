@@ -12,7 +12,7 @@ export const AppContext = createContext<GlobalState>(initialState);
 
 export function AppContextWrapper({ children }: Props) {
   const [favorites, setFavorites] = useState([]);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
 
   return (
     <AppContext.Provider

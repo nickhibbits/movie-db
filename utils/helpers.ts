@@ -58,3 +58,12 @@ function makeUpperCase(word: string) {
 
   return splitLetters.join("");
 }
+
+export function convertSeconds(seconds: number) {
+  const result = new Date(seconds * 1000).toISOString().slice(11, 16);
+
+  const hours = result.slice(0, 2);
+  const min = result.slice(3, 5);
+
+  return `${hours[0] === "0" ? hours[1] : hours}h ${min}m`;
+}

@@ -3,6 +3,7 @@ import React, { useContext, useEffect } from "react";
 
 import classes from "$/styles/block/TitleIdInfo.module.scss";
 import { useFavorites } from "$/state/AppContextWrapper";
+import { convertSeconds } from "$/utils/helpers";
 
 function TitleIdInfo({ titleInfo }: { titleInfo: TitleInfo }) {
   const { favorites, setFavorites } = useFavorites();
@@ -47,7 +48,9 @@ function TitleIdInfo({ titleInfo }: { titleInfo: TitleInfo }) {
                 genres.map((genre) => {
                   return <p className="genre">{genre.text}</p>;
                 })}
-              <p className="runtime">{runtime && runtime.seconds}</p>
+              <p className="runtime">
+                {runtime && convertSeconds(runtime.seconds)}
+              </p>
             </div>
           </section>
           <section className={classes.iconsWrapper}>
