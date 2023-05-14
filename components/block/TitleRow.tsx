@@ -5,6 +5,7 @@ import ScrollContainer from "$/components/composition/ScrollContainer";
 import React from "react";
 
 import layoutClasses from "$/styles/composition/Layout.module.scss";
+import { alternateMovieSvg } from "$/constants";
 
 function TitleRow({
   titleType,
@@ -26,7 +27,7 @@ function TitleRow({
               <li key={id}>
                 <Card
                   baseUrl="/title"
-                  alternateSvg="./motion-picture-film-svgrepo-com.svg"
+                  alternateSvg={alternateMovieSvg}
                   id={id}
                   primaryImage={primaryImage}
                   mainText={titleText.text}

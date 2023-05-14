@@ -4,6 +4,7 @@ import React, { useContext, useEffect } from "react";
 import classes from "$/styles/block/TitleIdInfo.module.scss";
 import { useFavorites } from "$/state/AppContextWrapper";
 import { convertSeconds } from "$/utils/helpers";
+import { alternateMovieSvg, likeButtonSvg } from "$/constants";
 
 function TitleIdInfo({ titleInfo }: { titleInfo: TitleInfo }) {
   const { favorites, setFavorites } = useFavorites();
@@ -30,9 +31,13 @@ function TitleIdInfo({ titleInfo }: { titleInfo: TitleInfo }) {
 
     return (
       <div className={classes.titleIdInfoContainer}>
-        <div className={classes.imageWrapper}>
-          <img src={primaryImage.url} alt="movie cover" />
-        </div>
+        {primaryImage ? (
+          <div className={classes.imageWrapper}>
+            <img src={primaryImage.url} alt="movie cover" />
+          </div>
+        ) : (
+          false
+        )}
         <div className={classes.infoContainer}>
           <section className="main-info-wrapper">
             <h1 className="header">
@@ -59,12 +64,18 @@ function TitleIdInfo({ titleInfo }: { titleInfo: TitleInfo }) {
               className={classes.iconWrapper}
               onClick={() => handleAddFavorite()}
             >
-              <img src="/heart-circle-svgrepo-com.svg" alt="favorite icon" />
+              <img src={likeButtonSvg} alt="favorite icon" />
             </div>
           </section>
           <section className={classes.extendedInfoWrapper}>
-            <h2 className="subheader">Overview</h2>
-            <p className="plot">{plot.plotText.plainText}</p>
+            {plot ? (
+              <>
+                <h2 className="subheader">Overview</h2>
+                <p className="plot">{plot.plotText.plainText}</p>
+              </>
+            ) : (
+              <p className="plot">No additonal info 🤷‍♂️</p>
+            )}
           </section>
         </div>
       </div>

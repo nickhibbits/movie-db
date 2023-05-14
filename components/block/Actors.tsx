@@ -6,6 +6,7 @@ import ScrollContainer from "$/components/composition/ScrollContainer";
 import Card from "$/components/block/Card";
 
 import layoutClasses from "$/styles/composition/Layout.module.scss";
+import { alternateActorSvg } from "$/constants";
 
 function Actors({ extendedCast }: { extendedCast: ExtendedCast }) {
   return (
@@ -17,10 +18,14 @@ function Actors({ extendedCast }: { extendedCast: ExtendedCast }) {
             <li key={cast.name.id}>
               <Card
                 baseUrl="/actors"
-                alternateSvg="/person-svgrepo-com.svg"
+                alternateSvg={alternateActorSvg}
                 id={cast.name.id}
                 primaryImage={cast.name.primaryImage}
-                secondaryText={cast.characters[0].name}
+                secondaryText={
+                  cast.characters
+                    ? cast.characters[0].name
+                    : "Character name Unavailable"
+                }
                 mainText={cast.name.nameText.text}
               />
             </li>

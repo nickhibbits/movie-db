@@ -51,6 +51,7 @@
   .cardInfoWrapper {
     position: relative;
     z-index: 10;
+    overflow-x: hidden;
 
     .cardText {
       &:nth-of-type(1) {
