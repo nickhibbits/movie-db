@@ -29,7 +29,6 @@ function TitleId() {
   return (
     <Layout>
       <div
-        className="info-container"
         style={{
           position: "absolute",
           backgroundImage: `url(${titleInfo && titleInfo.primaryImage.url})`,
