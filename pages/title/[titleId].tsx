@@ -28,6 +28,21 @@ function TitleId() {
 
   return (
     <Layout>
+      <div
+        className="info-container"
+        style={{
+          position: "absolute",
+          backgroundImage: `url(${titleInfo && titleInfo.primaryImage.url})`,
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "left",
+          backgroundSize: "90rem",
+          opacity: "0.2",
+          height: "100vh",
+          width: "100vw",
+          left: "-6rem",
+          filter: "blur(8px)",
+        }}
+      />
       {titleInfo && <TitleIdInfo titleInfo={titleInfo} />}
 
       {titleInfo?.extendedCast && titleInfo.extendedCast.length > 0 && (
