@@ -2,7 +2,10 @@ import TitleRow from "$/components/block/TitleRow";
 import { Result, _ResultsByTitleType } from "$/types/titleResults";
 import React from "react";
 
+// import classes from "$/styles/composition/Layout.module.scss";
+
 function ResultsByTitleType({ results }: { results: _ResultsByTitleType }) {
+  console.log("results", results);
   return (
     <>
       {Object.entries(results).map((result) => {
@@ -27,6 +30,8 @@ function ResultsByTitleType({ results }: { results: _ResultsByTitleType }) {
         result[0];
 
         const titles = result[1] as Result[];
+
+        console.log("titles 💥", titles);
 
         if (titles.length > 0) {
           return <TitleRow titleType={titleType} titles={titles} />;

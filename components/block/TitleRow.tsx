@@ -14,13 +14,14 @@ function TitleRow({
   titleType: string;
   titles: Result[];
 }) {
+  console.log("here 🟣 ");
+
   return (
     <>
       <ScrollContainer>
         <h2 className="subheader">{titleType}</h2>
         <ul className={layoutClasses.cardLayout}>
           {titles.map((title) => {
-            console.log("title", title);
             const { id, primaryImage, releaseYear, titleText } = title;
 
             return (
