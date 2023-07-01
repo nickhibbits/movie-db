@@ -1,14 +1,16 @@
-type Action = {
-  type: string;
-  id?: string;
-  index?: number;
+import { Dispatch, SetStateAction } from "react";
+
+export type Favorites = (string | undefined)[];
+
+export type User = {
+  id: string;
+  password: string;
+  username: string;
 };
 
-type Favorites = (string | undefined)[];
-
-type GlobalState = {
-  favorites?: Favorites;
-  setFavorites?: any;
-  loggedIn?: boolean;
-  setLoggedIn?: any;
+export type GlobalState = {
+  favorites: Favorites;
+  setFavorites: Dispatch<SetStateAction<Favorites>> | null;
+  user: User | {};
+  setUser: Dispatch<SetStateAction<User | {}>> | null;
 };

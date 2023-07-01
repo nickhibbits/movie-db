@@ -5,14 +5,18 @@ import { useAuth } from "$/state/AppContextWrapper";
 import Head from "next/head";
 import Layout from "$/components/composition/Layout";
 import Search from "$/components/block/Search";
+import { lengthCheck } from "$/utils/helpers";
 
 export default function Home() {
   const router = useRouter();
-  const { loggedIn } = useAuth();
+  const { user } = useAuth();
+
+  const activeUser = lengthCheck(user);
 
   useEffect(() => {
-    !loggedIn && router.push("/login");
-  }, [loggedIn]);
+    !activeUser && router.push("/login");
+  }, [user]);
+
   return (
     <>
       <Head>

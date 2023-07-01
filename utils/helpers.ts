@@ -67,3 +67,7 @@ export function convertSeconds(seconds: number) {
 
   return `${hours[0] === "0" ? hours[1] : hours}h ${min}m`;
 }
+
+export function lengthCheck(item = {}) {
+  return Object.values(item).length !== 0;
+}

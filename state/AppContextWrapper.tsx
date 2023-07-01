@@ -1,24 +1,23 @@
 import { Props } from "$/types/props";
-import React, { createContext, useReducer, useState } from "react";
+import { Favorites, GlobalState, User } from "$/types/state";
+import React, { createContext, useState } from "react";
 
 const initialState: GlobalState = {
-  // favorites: [],
-  // setFavorites: null,
-  // loggedIn: false,
-  // setLoggedIn: null,
+  favorites: [],
+  setFavorites: null,
+  user: {},
+  setUser: null,
 };
 
 export const AppContext = createContext<GlobalState>(initialState);
 
 export function AppContextWrapper({ children }: Props) {
   // set default favorites based on db tracking user activity between sessions
-  const [favorites, setFavorites] = useState([]);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [favorites, setFavorites] = useState<Favorites>([]);
+  const [user, setUser] = useState<User | {}>({});
 
   return (
-    <AppContext.Provider
-      value={{ favorites, setFavorites, loggedIn, setLoggedIn }}
-    >
+    <AppContext.Provider value={{ favorites, setFavorites, user, setUser }}>
       {children}
     </AppContext.Provider>
   );
@@ -31,7 +30,7 @@ export function useFavorites() {
 }
 
 export function useAuth() {
-  const { loggedIn, setLoggedIn } = React.useContext(AppContext);
+  const { user, setUser } = React.useContext(AppContext);
 
-  return { loggedIn, setLoggedIn };
+  return { user, setUser };
 }

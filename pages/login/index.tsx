@@ -8,12 +8,10 @@ import { useEffect } from "react";
 
 function Login() {
   const router = useRouter();
-  const { loggedIn, setLoggedIn } = useAuth();
+  const { setUser } = useAuth();
 
   useEffect(() => {
-    if (loggedIn) {
-      setLoggedIn(false);
-    }
+    setUser && setUser({});
   }, []);
 
   const checkAuth = ({
@@ -37,7 +35,7 @@ function Login() {
       );
     }
 
-    setLoggedIn(true);
+    setUser && setUser(authMatch);
     router.push("/");
   };
 
