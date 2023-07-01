@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useAuth } from "$/state/AppContextWrapper";
 
 function Navbar() {
-  const { loggedIn, setLoggedIn } = useAuth();
+  const { loggedIn } = useAuth();
 
   if (loggedIn) {
     return (

@@ -11,6 +11,7 @@ const initialState: GlobalState = {
 export const AppContext = createContext<GlobalState>(initialState);
 
 export function AppContextWrapper({ children }: Props) {
+  // set default favorites based on db tracking user activity between sessions
   const [favorites, setFavorites] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
 
