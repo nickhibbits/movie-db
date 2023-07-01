@@ -4,7 +4,9 @@ import { useFavorites } from "$/state/AppContextWrapper";
 import React from "react";
 
 function Container() {
-  return <Layout>{/* <ResultsByTitleType /> */}</Layout>;
+  return {
+    /* <ResultsByTitleType /> */
+  };
 
   // return <div className="loading"> loading</div>;
 }

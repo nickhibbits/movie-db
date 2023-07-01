@@ -1,11 +1,10 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useAuth } from "$/state/AppContextWrapper";
+import { lengthCheck } from "$/utils/helpers";
 
 import Head from "next/head";
-import Layout from "$/components/composition/Layout";
 import Search from "$/components/block/Search";
-import { lengthCheck } from "$/utils/helpers";
 
 export default function Home() {
   const router = useRouter();
@@ -28,9 +27,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout>
-        <Search />
-      </Layout>
+
+      <Search />
     </>
   );
 }

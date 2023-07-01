@@ -4,12 +4,12 @@
 .layout {
   @include mixins.gridBaseStyle;
   min-height: calc(100vh - variables.$nav-height);
-  padding: 3rem 0;
+  padding: 2rem 0;
   position: relative;
 }
 
 .scrollContainer {
-  padding: variables.$padding1;
+  padding: variables.$padding1 0;
   overflow-x: hidden;
   & .titleRowHeader {
     font-size: variables.$fs-700;

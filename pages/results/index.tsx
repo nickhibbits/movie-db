@@ -11,13 +11,13 @@ function Results({ results }: { results: string }) {
   const noResults = Object.values(_results).flat().length === 0;
 
   return (
-    <Layout>
+    <>
       {noResults ? (
         <div> No results for this search</div>
       ) : (
         <ResultsByTitleType results={_results} />
       )}
-    </Layout>
+    </>
   );
 }
 

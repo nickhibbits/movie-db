@@ -39,11 +39,7 @@ function Login() {
     router.push("/");
   };
 
-  return (
-    <Layout>
-      <LoginForm checkAuth={checkAuth} />
-    </Layout>
-  );
+  return <LoginForm checkAuth={checkAuth} />;
 }
 
 export default Login;

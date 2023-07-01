@@ -10,4 +10,10 @@
 .nav_options_wrapper {
   display: flex;
   gap: 1.5rem;
+  width: variables.$standard-width;
+  margin-inline: auto;
+
+  .auth_wrapper {
+    margin-left: auto;
+  }
 }

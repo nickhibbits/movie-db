@@ -37,11 +37,7 @@ function Favorites() {
   }, []);
 
   if (results) {
-    return (
-      <Layout>
-        <TitleRow titleType="Favorites" titles={results} />
-      </Layout>
-    );
+    return <TitleRow titleType="Favorites" titles={results} />;
   }
 
   return <div>Loading</div>;
