@@ -2,7 +2,7 @@
 @use "$/styles/variables";
 
 .nav {
-  padding: variables.$padding2;
+  padding: variables.$padding2 0;
   border-bottom: solid 1px variables.$color-neutral-100;
   height: variables.$nav-height;
 }
@@ -15,5 +15,12 @@
 
   .auth_wrapper {
     margin-left: auto;
+  }
+}
+
+.logout_button {
+  opacity: variables.$opacity-500;
+  &:hover {
+    cursor: pointer;
   }
 }
