@@ -2,17 +2,19 @@ import React, { useRef } from "react";
 import classes from "$/styles/block/Login.module.scss";
 
 function LoginForm({ checkAuth }: { checkAuth: any }) {
-  const passwordRef = useRef(null);
-  const usernameRef = useRef(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const usernameRef = useRef<HTMLInputElement>(null);
 
   const handleLogin = (e: any) => {
     e.preventDefault();
 
     if (passwordRef.current && usernameRef.current) {
-      const password = passwordRef.current;
-      const username = usernameRef.current;
+      const password = passwordRef.current.value;
+      const username = usernameRef.current.value;
 
       checkAuth({ password, username });
+      passwordRef.current.value = "";
+      usernameRef.current.value = "";
     }
   };
 
@@ -29,7 +31,11 @@ function LoginForm({ checkAuth }: { checkAuth: any }) {
           <label htmlFor="" className={classes.form_label}>
             Password
           </label>
-          <input type="text" ref={passwordRef} className={classes.form_input} />
+          <input
+            type="password"
+            ref={passwordRef}
+            className={classes.form_input}
+          />
         </div>
         <div className={classes.button_wrapper}>
           <button className={classes.form_button}>Login</button>
