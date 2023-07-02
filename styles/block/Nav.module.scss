@@ -2,7 +2,8 @@
 @use "$/styles/variables";
 
 .nav {
-  padding: variables.$padding2 0;
+  display: flex;
+  align-items: center;
   border-bottom: solid 1px variables.$color-neutral-100;
   height: variables.$nav-height;
 }

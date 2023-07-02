@@ -26,7 +26,7 @@ function Search() {
   }
 
   return (
-    <form className="center column" onSubmit={(e) => handleSelect(e)}>
+    <form className={classes.search_form} onSubmit={(e) => handleSelect(e)}>
       <input
         className={classes.input}
         type="text"

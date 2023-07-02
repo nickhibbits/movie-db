@@ -70,3 +70,13 @@
     }
   }
 }
+
+@mixin buttonBaseStyles($border_color, $background, $font_color) {
+  background: $background;
+  color: $font_color;
+  border: solid 2px $border_color;
+  padding: 0.4rem;
+  font: inherit;
+  outline: inherit;
+  border-radius: variables.$border-radius-1;
+}

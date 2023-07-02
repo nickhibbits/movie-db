@@ -1,12 +1,30 @@
 @use "$/styles/variables";
+@use "$/styles/mixins";
 
-.input {
-  padding: variables.$padding1;
-  min-width: 25rem;
-  border: none;
-  border-bottom: variables.$border-thin;
-}
+.search_form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  border-radius: variables.$border-radius-1;
 
-.button {
-  min-width: 100%;
+  .input {
+    padding: variables.$padding1;
+    min-width: 90%;
+    border: none;
+    border-bottom: variables.$border-thin;
+    border-radius: inherit;
+  }
+
+  .button {
+    @include mixins.buttonBaseStyles(
+      variables.$color-neutral-1000,
+      variables.$color-neutral-100,
+      variables.$color-neutral-1000
+    );
+    position: absolute;
+    height: 100%;
+    right: 5%;
+    padding: 0 variables.$padding1;
+  }
 }
