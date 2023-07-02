@@ -1,0 +1,15 @@
+@use "$/styles/variables.scss";
+@use "$/styles/mixins.scss";
+
+.title_page {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-block: auto;
+  margin-bottom: 22%;
+}
+
+.header {
+}
+.subheader {
+}

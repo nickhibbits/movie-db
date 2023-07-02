@@ -27,9 +27,7 @@ export default function App({ Component, pageProps }: AppProps) {
       </style>
       <AppContextWrapper>
         <Navbar />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <Component {...pageProps} />
       </AppContextWrapper>
     </>
   );

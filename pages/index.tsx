@@ -5,6 +5,9 @@ import { lengthCheck } from "$/utils/helpers";
 
 import Head from "next/head";
 import Search from "$/components/block/Search";
+import TitlePage from "$/components/block/TitlePage";
+
+import layout from "$/styles/composition/Layout.module.scss";
 
 export default function Home() {
   const router = useRouter();
@@ -28,7 +31,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Search />
+      <main className={layout.layout_base}>
+        <TitlePage>
+          <Search />
+        </TitlePage>
+      </main>
     </>
   );
 }

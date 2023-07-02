@@ -1,9 +1,8 @@
-import React from "react";
 import { _ResultsByTitleType } from "$/types/titleResults";
 
-import Layout from "$/components/composition/Layout";
-
 import ResultsByTitleType from "$/pages/results/ResultsByTitleType";
+
+import layout from "$/styles/composition/Layout.module.scss";
 
 function Results({ results }: { results: string }) {
   const _results = JSON.parse(results) as _ResultsByTitleType;
@@ -15,7 +14,9 @@ function Results({ results }: { results: string }) {
       {noResults ? (
         <div> No results for this search</div>
       ) : (
-        <ResultsByTitleType results={_results} />
+        <main className={layout.layout_base}>
+          <ResultsByTitleType results={_results} />
+        </main>
       )}
     </>
   );

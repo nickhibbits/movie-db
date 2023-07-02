@@ -1,13 +1,14 @@
 import { _ResultsByTitleType } from "$/types/titleResults";
 import { useFavorites } from "$/state/AppContextWrapper";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-import Container from "$/pages/favorites/Container";
 import { TitleInfo } from "$/types/titleInfo";
 import { fetchData } from "$/utils/fetchData";
 import { formatTitleInfo } from "$/utils/helpers";
-import Layout from "$/components/composition/Layout";
+
 import TitleRow from "$/components/block/TitleRow";
+
+import layout from "$/styles/composition/Layout.module.scss";
 
 // function Favorites({ results }: { results: _ResultsByTitleType }) {
 function Favorites() {
@@ -37,7 +38,11 @@ function Favorites() {
   }, []);
 
   if (results) {
-    return <TitleRow titleType="Favorites" titles={results} />;
+    return (
+      <main className={layout.layout_base}>
+        <TitleRow titleType="Favorites" titles={results} />
+      </main>
+    );
   }
 
   return <div>Loading</div>;

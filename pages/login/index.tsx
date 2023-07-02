@@ -1,10 +1,12 @@
 import { useAuth } from "$/state/AppContextWrapper";
 import { useRouter } from "next/router";
 
-import Layout from "$/components/composition/Layout";
-import LoginForm from "$/components/block/LoginForm";
 import { users } from "$/constants/dummy";
 import { useEffect } from "react";
+
+import LoginForm from "$/components/block/LoginForm";
+
+import layout from "$/styles/composition/Layout.module.scss";
 
 function Login() {
   const router = useRouter();
@@ -39,7 +41,11 @@ function Login() {
     router.push("/");
   };
 
-  return <LoginForm checkAuth={checkAuth} />;
+  return (
+    <main className={layout.layout_no_padding}>
+      <LoginForm checkAuth={checkAuth} />
+    </main>
+  );
 }
 
 export default Login;

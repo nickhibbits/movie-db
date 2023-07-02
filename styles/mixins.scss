@@ -8,6 +8,12 @@
   margin-inline: auto;
 }
 
+@mixin layoutBaseStyle($padding, $height) {
+  min-height: $height;
+  padding: $padding 0;
+  position: relative;
+}
+
 // Utility
 @mixin imageBaseStyle {
   left: 0;

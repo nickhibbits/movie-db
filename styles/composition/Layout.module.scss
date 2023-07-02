@@ -1,11 +1,22 @@
 @use "$/styles/mixins";
 @use "$/styles/variables";
 
-.layout {
+.layout_base {
   @include mixins.gridBaseStyle;
-  min-height: calc(100vh - variables.$nav-height);
-  padding: 2rem 0;
-  position: relative;
+  @include mixins.layoutBaseStyle(2rem, calc(100vh - variables.$nav-height));
+}
+
+.layout_no_padding {
+  @include mixins.gridBaseStyle;
+  @include mixins.layoutBaseStyle(0, 100vh);
+}
+
+.title_id {
+  overflow-x: hidden;
+  .image_wrapper {
+    border: solid 1px red;
+    position: relative;
+  }
 }
 
 .scrollContainer {
