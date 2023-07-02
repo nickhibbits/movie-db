@@ -42,7 +42,7 @@ function Login() {
   };
 
   return (
-    <main className={layout.layout_no_padding}>
+    <main className={layout.layout_no_nav}>
       <LoginForm checkAuth={checkAuth} />
     </main>
   );

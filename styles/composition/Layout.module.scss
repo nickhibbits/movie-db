@@ -6,7 +6,7 @@
   @include mixins.layoutBaseStyle(2rem, calc(100vh - variables.$nav-height));
 }
 
-.layout_no_padding {
+.layout_no_nav {
   @include mixins.gridBaseStyle;
   @include mixins.layoutBaseStyle(0, 100vh);
 }
