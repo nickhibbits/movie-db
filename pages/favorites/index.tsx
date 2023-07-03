@@ -13,7 +13,7 @@ import layout from "$/styles/composition/Layout.module.scss";
 // function Favorites({ results }: { results: _ResultsByTitleType }) {
 function Favorites() {
   const { user } = useAuth();
-  const [results, setResults] = useState<TitleInfo[]>();
+  const [results, setResults] = useState<TitleInfo[] | boolean>([]);
 
   useEffect(() => {
     if (user && user.favorites) {
@@ -28,27 +28,32 @@ function Favorites() {
 
         const _results = await Promise.all(responses);
 
-        console.log("_results", _results);
-
-        setResults(_results);
+        setResults(_results.length === 0 ? false : _results);
       };
 
       getTitles(urls);
     }
-  }, []);
+  }, [user]);
 
-  if (results && results.length !== 0)
-    return (
-      <main className={layout.layout_base}>
-        <TitleRow titleType="Favorites" titles={results} />
-      </main>
-    );
-
-  if (user && user.favorites.length === 0) {
-    <div className="">No Favorites</div>;
+  if (results !== false && typeof results !== "boolean") {
+    if (results && results.length === 0) {
+      return <div>Loading</div>;
+    }
   }
 
-  return <div>Loading</div>;
+  if (typeof results !== "boolean") {
+    if (results && results.length !== 0) {
+      return (
+        <main className={layout.layout_base}>
+          <TitleRow titleType="Favorites" titles={results} />
+        </main>
+      );
+    }
+  }
+
+  if (results === false) {
+    return <div className="">No Favorites</div>;
+  }
 }
 
 export default Favorites;
