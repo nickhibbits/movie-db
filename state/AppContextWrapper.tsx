@@ -1,14 +1,7 @@
 import { Props } from "$/types/props";
 import { GlobalState, User } from "$/types/state";
 import { useLocalStorage } from "$/utils/localStorage";
-import { useRouter } from "next/router";
-import { createContext, useEffect, useContext } from "react";
-
-// export const userClean: User = {
-//   id: "",
-//   password: "",
-//   username: "",
-// };
+import { createContext, useContext } from "react";
 
 export const AppContext = createContext<GlobalState>({
   user: null,

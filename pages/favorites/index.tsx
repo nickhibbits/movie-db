@@ -1,5 +1,5 @@
 import { _ResultsByTitleType } from "$/types/titleResults";
-import { useFavorites } from "$/state/AppContextWrapper";
+import { useAuth } from "$/state/AppContextWrapper";
 import { useEffect, useState } from "react";
 
 import { TitleInfo } from "$/types/titleInfo";
@@ -12,12 +12,12 @@ import layout from "$/styles/composition/Layout.module.scss";
 
 // function Favorites({ results }: { results: _ResultsByTitleType }) {
 function Favorites() {
-  const { favorites } = useFavorites();
+  const { user } = useAuth();
   const [results, setResults] = useState<TitleInfo[]>();
 
   useEffect(() => {
-    if (favorites) {
-      const urls = favorites.map((favoriteId) => {
+    if (user && user.favorites) {
+      const urls = user.favorites.map((favoriteId) => {
         return `/api/titles/searchTitlesById?titleId=${favoriteId}`;
       });
 
@@ -37,12 +37,15 @@ function Favorites() {
     }
   }, []);
 
-  if (results) {
+  if (results && results.length !== 0)
     return (
       <main className={layout.layout_base}>
         <TitleRow titleType="Favorites" titles={results} />
       </main>
     );
+
+  if (user && user.favorites.length === 0) {
+    <div className="">No Favorites</div>;
   }
 
   return <div>Loading</div>;

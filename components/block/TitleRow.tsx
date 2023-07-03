@@ -14,8 +14,6 @@ function TitleRow({
   titleType: string;
   titles: Result[];
 }) {
-  console.log("here 🟣 ");
-
   return (
     <>
       <ScrollContainer>

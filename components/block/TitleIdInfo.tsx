@@ -1,15 +1,15 @@
 import { TitleInfo } from "$/types/titleInfo";
-import React, { useEffect } from "react";
-import { useFavorites } from "$/state/AppContextWrapper";
+import { useEffect } from "react";
 import { convertSeconds } from "$/utils/helpers";
 import { likeButtonSvg } from "$/constants";
 
 import classes from "$/styles/block/TitleIdInfo.module.scss";
+import { useAuth } from "$/state/AppContextWrapper";
 
 function TitleIdInfo({ titleInfo }: { titleInfo: TitleInfo }) {
-  const { favorites, setFavorites } = useFavorites();
+  const { user, setUser } = useAuth();
 
-  if (favorites) {
+  if (user && user.favorites) {
     const {
       id,
       genres,
@@ -22,12 +22,15 @@ function TitleIdInfo({ titleInfo }: { titleInfo: TitleInfo }) {
     } = titleInfo;
 
     const handleAddFavorite = () => {
-      setFavorites((current: any) => [...current, id]);
+      setUser((current: any) => ({
+        ...current,
+        favorites: [...current.favorites, id],
+      }));
     };
 
-    useEffect(() => {
-      console.log("favorites updated", favorites);
-    }, [favorites]);
+    // useEffect(() => {
+    //   console.log("favorites updated", user.favorites);
+    // }, [favorites]);
 
     return (
       <div className={classes.titleIdInfoContainer}>

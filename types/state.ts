@@ -6,6 +6,7 @@ export type User = {
   id: string;
   password: string;
   username: string;
+  favorites: Favorites;
 };
 
 export type GlobalState = {
