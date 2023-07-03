@@ -1,18 +1,16 @@
-import Navbar from "$/components/block/Navbar";
-import Layout from "$/components/composition/Layout";
-import { AppContextWrapper } from "$/state/AppContextWrapper";
-import "$/styles/globals.scss";
 import type { AppProps } from "next/app";
-import { Raleway, Josefin_Sans, Overpass } from "next/font/google";
-import { useState } from "react";
+import { AppContextWrapper } from "$/state/AppContextWrapper";
+import { Raleway, Overpass } from "next/font/google";
+
+import Navbar from "$/components/block/Navbar";
+
+import "$/styles/globals.scss";
 
 const raleway = Raleway({ subsets: ["latin"], style: ["normal"] });
 const overpass = Overpass({ subsets: ["latin"] });
 // const josefin_sans = Josefin_Sans({ subsets: ["latin"], style: ["italic"] });
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [loggedIn, setLoggedIn] = useState(false);
-
   return (
     <>
       <style jsx global>

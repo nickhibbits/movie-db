@@ -2,7 +2,6 @@ import { useAuth } from "$/state/AppContextWrapper";
 import { useRouter } from "next/router";
 
 import { users } from "$/constants/dummy";
-import { useEffect } from "react";
 
 import LoginForm from "$/components/block/LoginForm";
 
@@ -12,10 +11,6 @@ function Login() {
   const router = useRouter();
   const { setUser } = useAuth();
 
-  useEffect(() => {
-    setUser && setUser({});
-  }, []);
-
   const checkAuth = ({
     username,
     password,
@@ -23,6 +18,7 @@ function Login() {
     username: string | null;
     password: string | null;
   }) => {
+    console.log("✅ checkAuth");
     const authMatch = Object.values(users).find((user) => {
       if (user.username === username) {
         if (user.password === password) {
@@ -37,7 +33,7 @@ function Login() {
       );
     }
 
-    setUser && setUser(authMatch);
+    setUser(authMatch);
     router.push("/");
   };
 

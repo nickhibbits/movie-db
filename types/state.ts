@@ -9,8 +9,7 @@ export type User = {
 };
 
 export type GlobalState = {
-  favorites: Favorites;
-  setFavorites: Dispatch<SetStateAction<Favorites>> | null;
-  user: User | {};
-  setUser: Dispatch<SetStateAction<User | {}>> | null;
+  user: User | null;
+  setUser: (value: any) => void;
+  clearUser: () => void;
 };

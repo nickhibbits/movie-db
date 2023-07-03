@@ -10,15 +10,6 @@ import TitlePage from "$/components/block/TitlePage";
 import layout from "$/styles/composition/Layout.module.scss";
 
 export default function Home() {
-  const router = useRouter();
-  const { user } = useAuth();
-
-  const activeUser = lengthCheck(user);
-
-  useEffect(() => {
-    !activeUser && router.push("/login");
-  }, [user]);
-
   return (
     <>
       <Head>

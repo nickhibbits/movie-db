@@ -1,20 +1,21 @@
-import React from "react";
-
-import classes from "$/styles/block/Nav.module.scss";
-import Link from "next/link";
 import { useAuth } from "$/state/AppContextWrapper";
 import { useRouter } from "next/router";
 
+import classes from "$/styles/block/Nav.module.scss";
+import Link from "next/link";
+import { useEffect } from "react";
+
 function Navbar() {
-  const { user, setUser } = useAuth();
+  const { user, clearUser } = useAuth();
+
   const router = useRouter();
 
   const handleLogout = () => {
-    setUser && setUser({});
+    clearUser();
     router.replace("./login");
   };
 
-  if (user && "username" in user) {
+  if (user) {
     return (
       <nav className={classes.nav}>
         <ul className={classes.nav_options_wrapper}>
@@ -34,7 +35,6 @@ function Navbar() {
       </nav>
     );
   }
-
   return null;
 }
 

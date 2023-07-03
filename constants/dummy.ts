@@ -4,6 +4,7 @@ export const users = {
     password: "appleseed",
     username: "nhibbits",
     favorites: [],
+    loggedIn: false,
   },
 
   sg01: {
@@ -11,5 +12,6 @@ export const users = {
     password: "appleseed",
     username: "sgreen",
     favorites: [],
+    loggedIn: false,
   },
 };

@@ -1,36 +1,38 @@
 import { Props } from "$/types/props";
-import { Favorites, GlobalState, User } from "$/types/state";
-import React, { createContext, useState } from "react";
+import { GlobalState, User } from "$/types/state";
+import { useLocalStorage } from "$/utils/localStorage";
+import { useRouter } from "next/router";
+import { createContext, useEffect, useContext } from "react";
 
-const initialState: GlobalState = {
-  favorites: [],
-  setFavorites: null,
-  user: {},
-  setUser: null,
-};
+// export const userClean: User = {
+//   id: "",
+//   password: "",
+//   username: "",
+// };
 
-export const AppContext = createContext<GlobalState>(initialState);
+export const AppContext = createContext<GlobalState>({
+  user: null,
+  setUser: () => {},
+  clearUser: () => {},
+});
 
 export function AppContextWrapper({ children }: Props) {
-  // set default favorites based on db tracking user activity between sessions
-  const [favorites, setFavorites] = useState<Favorites>([]);
-  const [user, setUser] = useState<User | {}>({});
+  const [value, setValue, clearValue] = useLocalStorage("user", null);
 
   return (
-    <AppContext.Provider value={{ favorites, setFavorites, user, setUser }}>
+    <AppContext.Provider
+      value={{
+        user: value,
+        setUser: setValue,
+        clearUser: clearValue,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );
 }
 
-export function useFavorites() {
-  const { favorites, setFavorites } = React.useContext(AppContext);
-
-  return { favorites, setFavorites };
-}
-
 export function useAuth() {
-  const { user, setUser } = React.useContext(AppContext);
-
-  return { user, setUser };
+  const { user, setUser, clearUser } = useContext(AppContext);
+  return { user, setUser, clearUser };
 }
