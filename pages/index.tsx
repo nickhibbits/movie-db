@@ -1,8 +1,3 @@
-import { useEffect } from "react";
-import { useRouter } from "next/router";
-import { useAuth } from "$/state/AppContextWrapper";
-import { lengthCheck } from "$/utils/helpers";
-
 import Head from "next/head";
 import Search from "$/components/block/Search";
 import TitlePage from "$/components/block/TitlePage";

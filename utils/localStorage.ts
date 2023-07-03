@@ -8,27 +8,25 @@ export function useLocalStorage(
 
   useEffect(() => {
     function getSavedValue(key: string, initialValue: any) {
-      console.log({ key, initialValue });
       const savedValue = localStorage.getItem(key);
-      // console.log("savedValue", savedValue);
-
       const parsedValue = savedValue !== null && JSON.parse(savedValue);
-      // console.log("parsedValue", savedValue);
 
       if (parsedValue) return parsedValue;
 
       return initialValue;
     }
 
-    console.log("getSavedValue", getSavedValue(key, initialValue));
+    const savedValue = getSavedValue(key, initialValue);
 
-    return setValue(getSavedValue(key, initialValue));
+    // When logged in auth data has already been stored in localStorage
+    // If user refreshes page, update the state to match info stored in localStorage, persisting the session
+    if (savedValue !== null) {
+      return setValue(getSavedValue(key, initialValue));
+    }
   }, []);
 
   useEffect(() => {
     // Update localStorage when the value changes
-    console.log("🟢 updating local storage");
-
     localStorage.setItem(key, JSON.stringify(value));
   }, [value]);
 
