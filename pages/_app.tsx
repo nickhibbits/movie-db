@@ -1,6 +1,6 @@
 import type { AppProps } from "next/app";
 import { AppContextWrapper } from "$/state/AppContextWrapper";
-import { Raleway, Overpass } from "next/font/google";
+import { Raleway, Overpass, Ultra, Average_Sans } from "next/font/google";
 
 import Navbar from "$/components/block/Navbar";
 
@@ -8,6 +8,8 @@ import "$/styles/globals.scss";
 
 const raleway = Raleway({ subsets: ["latin"], style: ["normal"] });
 const overpass = Overpass({ subsets: ["latin"] });
+const ultra = Ultra({ subsets: ["latin"], weight: "400" });
+const averageSans = Average_Sans({ subsets: ["latin"], weight: "400" });
 // const josefin_sans = Josefin_Sans({ subsets: ["latin"], style: ["italic"] });
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -15,11 +17,18 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <style jsx global>
         {`
-          html {
-            font-family: ${raleway.style.fontFamily};
+          h1,
+          h2,
+          h3 {
+            font-family: ${ultra.style.fontFamily};
           }
+
+          p,
+          li,
+          label,
+          input,
           .text {
-            font-family: ${overpass.style.fontFamily};
+            font-family: ${averageSans.style.fontFamily};
           }
         `}
       </style>

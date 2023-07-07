@@ -37,7 +37,7 @@ function LoginForm({ checkAuth }: { checkAuth: any }) {
             className={classes.form_input}
           />
         </div>
-        <div className={classes.button_wrapper}>
+        <div className={`text ${classes.button_wrapper}`}>
           <button className={classes.form_button}>Login</button>
           <button className={classes.form_button}>Create Account</button>
         </div>

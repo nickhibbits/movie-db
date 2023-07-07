@@ -17,14 +17,15 @@
   }
 
   .button {
-    @include mixins.buttonBaseStyles(
-      variables.$color-neutral-1000,
-      variables.$color-neutral-100,
-      variables.$color-neutral-1000
-    );
+    // @include mixins.buttonBaseStyles(
+    //   variables.$color-neutral-1000,
+    //   variables.$color-neutral-100,
+    //   variables.$color-neutral-1000
+    // );
     position: absolute;
     height: 100%;
     right: 5%;
     padding: 0 variables.$padding1;
+    border-radius: variables.$border-radius-1;
   }
 }

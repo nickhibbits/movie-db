@@ -33,7 +33,7 @@ function Search() {
         placeholder="Search titles"
         ref={title}
       />
-      <button className={classes.button} type="submit">
+      <button className={`text ${classes.button}`} type="submit">
         Search
       </button>
     </form>
