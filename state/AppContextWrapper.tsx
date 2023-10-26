@@ -1,5 +1,5 @@
 import { Props } from "$/types/props";
-import { GlobalState, User } from "$/types/state";
+import { GlobalState } from "$/types/state";
 import { useLocalStorage } from "$/utils/localStorage";
 import { createContext, useContext } from "react";
 

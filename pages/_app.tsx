@@ -6,8 +6,6 @@ import Navbar from "$/components/block/Navbar";
 
 import "$/styles/globals.scss";
 
-const raleway = Raleway({ subsets: ["latin"], style: ["normal"] });
-const overpass = Overpass({ subsets: ["latin"] });
 const ultra = Ultra({ subsets: ["latin"], weight: "400" });
 const averageSans = Average_Sans({ subsets: ["latin"], weight: "400" });
 // const josefin_sans = Josefin_Sans({ subsets: ["latin"], style: ["italic"] });
